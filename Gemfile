@@ -37,7 +37,11 @@ group :production do
 	gem 'thin'
 	gem "devise", "~> 1.5.3"
 	gem "devise_invitable", "~> 0.6.0"
-	gem "paperclip", "~> 2.4.3"
+	gem 'annotate', "~> 2.5.0"
+	gem 'countries', "~> 0.8.2"
+	gem 'country_select', "~> 0.0.2"
+	gem 'jquery-rails', "~> 1.0.12"
+	gem 'paperclip', "~> 2.4.3"
 end
 
 # Bundle edge Rails instead:
