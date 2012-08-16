@@ -37,6 +37,7 @@ group :production do
 	gem 'thin'
 	gem "devise", "~> 1.5.3"
 	gem "devise_invitable", "~> 0.6.0"
+	gem "paperclip", "~> 2.4.3"
 end
 
 # Bundle edge Rails instead:
