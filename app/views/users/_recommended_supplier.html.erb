@@ -1,0 +1,9 @@
+<tr>
+	<span class="details">Shared network</span>
+</tr>
+<tr>
+	<td class="supplier">
+		<span class="details"><%= recommended_supplier.first_name %> | <%= link_to 'view', supplier_path(recommended_supplier) %></span>
+		<span class="timestamp">Recommended: <%= time_ago_in_words(recommened_supplier.recommendation_accepted_at) %> ago.</span>
+	</td>
+</tr>

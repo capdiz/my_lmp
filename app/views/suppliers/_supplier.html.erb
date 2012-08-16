@@ -1,0 +1,36 @@
+<table class="suppliers" summary="User suppliers">
+	<h2>Supplier network</h2>
+	<% @suppliers.each_slice(3) do |suppliers| %>
+		<tr>
+			<% suppliers.zip(["left", "right"]).each do |supplier, side| %>
+				<td>
+					<ul>
+						<% if supplier.profile_photo.nil? %>
+							<div id="image_holder">
+								<%= image_tag supplier.supplier_image.url(:thumb) %><br/>
+								<% if supplier.first_name.nil? %>
+									<span class="profile"><label>Request not confirmed</label> | </span><span class="details"><%= link_to 'View', supplier_path(supplier), @supplier %></span><br/>
+									<span class="details">Added: </span><span class="name"><%= time_ago_in_words(supplier.created_at) %> ago.</span>							
+								<% else %>
+									<span class="profile"><%= supplier.first_name %> | </span><span class="details"><%= link_to 'View', supplier_path(supplier), @supplier %></span><br/>
+									<span class="details">Added: </span><span class="name"><%= time_ago_in_words(supplier.created_at) %> ago.</span>	
+								<% end %>
+							</div>
+						<% else %>
+							<div id="image_holder">
+								<%= image_tag supplier.profile_photo.profile_image.url(:small) %><br/>
+								<span class="profile"><%= supplier.first_name %> | </span><span class="details"><%= link_to 'View', supplier_path(supplier), @supplier %></span><br/>
+								<span class="details">Added: </span><span class="name"><%= time_ago_in_words(supplier.created_at) %> ago.</span>
+							</div>
+						<% end %>
+					</ul>
+				</td>
+			<% end %>
+		</tr>
+	<% end %>
+</table>
+<%= will_paginate @suppliers %>
+
+
+		
+

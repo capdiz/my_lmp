@@ -1,0 +1,37 @@
+<pagenav>
+	<div id="pageNav"><%= link_to "Home", root_path %> | <%= link_to "Pricing", pricing_path %> | 
+				<% if user_signed_in? %>
+					<%= link_to "My networks", "#" %> |
+				<% elsif supplier_signed_in? %>
+					<%= link_to "My customer network", "#" %> |
+				<% end %>
+
+				<% if user_signed_in? %>
+					<%= link_to "Invite", new_supplier_invitation_path %> |
+				<% elsif supplier_signed_in? %>
+					<%= link_to "My Account", account_path(current_supplier) %> |
+				<% end %>
+
+				<% if user_signed_in? %>
+					<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+				<% elsif supplier_signed_in? %>
+					<%= link_to "Sign out", destroy_supplier_session_path, :method => :delete %> |
+				<% else %>
+					<%= link_to "Sign in", new_user_session_path %> | <%= link_to "Supplier sign in", new_supplier_session_path %>
+				<% end %>
+
+				<% if user_signed_in? %>
+					| <%= link_to "Settings", edit_user_path(current_user) %>
+				<% elsif supplier_signed_in? %>
+					<%= link_to "Settings", edit_supplier_path(current_supplier) %>
+				<% end %>
+
+				<% if user_signed_in? %>
+					| <%= link_to "Profile", current_user %>
+				<% end %>
+
+				<% if supplier_signed_in? %>
+					| <%= link_to "New listing", new_listing_path %>
+				<% end %>
+			</div>
+</pagenav>

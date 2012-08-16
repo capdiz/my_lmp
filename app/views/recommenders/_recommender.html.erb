@@ -1,0 +1,9 @@
+<tr>
+	<td class="user_alert">
+		<span class="product">Recommendation for: <%= recommender.user_alert.title %></span>
+		<span class="name">You posted it: <%= time_ago_in_words(recommender.user_alert.created_at) %> ago.</span>
+		<% user_name = recommender.recommended_by_name %>
+		<span class="name">Recommended by: <%= link_to user_name, user_path(recommender.recommended_by_user_id) %></span>
+		<span class="name">Recommended supplier: <%= recommender.supplier %> | <%= link_to 'view', supplier_path(recommender.recommended_to_supplier_id) %> | <%= link_to 'contact', contact_path(recommender.recommended_to_supplier_id) %> | <%= link_to 'block', "#" %></span>
+	</td>
+</tr>	

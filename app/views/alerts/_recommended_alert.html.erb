@@ -1,0 +1,8 @@
+<tr>
+	<td class ="alert">
+		<% for recommended_alert in @recommended_alerts do %>
+			<span class="details"><%= recommended_alert.title %></span><br/>
+			<span class="details">Listed: </span><span class="status"><%= time_ago_in_words(recommended_alert.created_at) ago.%></span> <span class="details"><%= link_to 'view', supplier_path(recommended_alert.supplier_id) %></span>
+		<% end %>
+	</td>
+</tr>

@@ -1,0 +1,22 @@
+<tr>
+	<table cellspacing="1" cellpadding="1">
+		<tr>
+			<td>
+				<div id="image_holder">
+					<% if @supplier_user.profile_photo.nil? %>
+						<%= image_tag @supplier_user.user_image.url(:thumb) %><br/>
+						<span class="details"><%= link_to 'View', user_path(@supplier_user) %></span>
+					<% else %>
+						<%= image_tag @supplier_user.profile_photo.profile_image.url(:thumb) %><br/>
+						 <span class="details"><%= link_to 'View', user_path(@supplier_user) %></span>
+					<% end %>
+				</div>
+			</td>
+			<td>
+				<div class="user_details">
+					<%= @supplier_user.first_name  %> invited you!<br/>
+				</div>
+			</td>
+		</tr>
+	</table>	
+</tr>

@@ -1,0 +1,18 @@
+<% if user_contact.contact_message_expires_at > Time.now %>
+	<tr>
+		<td class="user_alert">
+			<div class="product_alert">			
+				<%= image_tag user_contact.user.profile_photo.profile_image.url(:thumb) %>
+				<span class="name"><%= user_contact.user.first_name %></span>
+			</div>
+		</td>
+		<td class="user_alert">
+			<div class="product_alert">
+				<span class="name">Request for: <%= user_contact.contact_about_alert %></span>
+				<span class="product"><%= user_contact.contact_message %></span>
+				<span class="name">Recieved: <%= time_ago_in_words(user_contact.contact_message_sent_at) %> ago.</span>
+				<span class="product"><%= link_to 'Accept contact', user_contact_path(user_contact), :method => :put %> | <%= link_to 'Remove', user_contact, :method => :delete, :confirm => "Are you sure you would like to delete this contact?", :title => user_contact.contact_about_alert  %> </span>
+			</div>
+		</td>
+	</tr>	
+<% end %>

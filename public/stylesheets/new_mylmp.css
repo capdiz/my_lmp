@@ -1,0 +1,810 @@
+body{
+	font-family: Arial, Helvetica, sans-serif;
+	color: #333333;
+	line-height: 1.166;
+	margin: 0px;
+	padding: 0px;
+}
+
+a{
+	color: #006699;
+	text-decoration: none;
+}
+
+a:link{
+	color: #006699;
+	text-decoration: none;
+}
+
+a:visited{
+	color: #006699;
+	text-decoration: none;
+}
+
+a:hover{
+	color: #006699;
+	text-decoration: underline;
+}
+
+h1{
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 120%;
+	color: #334d55;
+	margin: 0px;
+	padding: 0px;
+}
+
+h2{
+	font-family: Arial, sans-serif;
+	font-size: 90%;
+	color: #006699;
+	margin: 0px;
+	padding: 0px;
+}
+
+h3{
+	font-family: Arial, sans-serif;
+	font-size: 100%;
+	color: #334d55;
+	margin: 0px;
+	padding: 0px;
+}
+
+h4{
+	font-family: Arial, sans-serif;
+	font-size: 100%;
+	font-weight: normal;
+	color: #333333;
+	margin: 0px;
+	padding: 0px;
+}
+
+h5{
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 100%;
+	color: #334d55;
+	margin: 0px;
+	padding: 0px;
+}
+
+ul{
+	list-style-type: square;
+	color: #006699;
+}
+
+ul ul{
+	list-style-type: disc;
+}
+
+ul ul ul{
+	list-style-type: none;
+}
+
+label{
+	font-family: Arial, sans-serif;
+	font-size: 100%;
+	font-weight: bold;
+	color: #334d55;
+}
+	
+#siteHolder{
+	width: 100%;
+	border-bottom: 2px solid #cccccc;
+	background: #55A0FF;
+	height: 130px;
+}
+
+#siteNav{
+	width: 80%;
+	background: #F5F5F5;
+	border-top: solid 2px #cccccc;
+	border-radius: 3px;
+	position: absolute;
+	left: 122px;
+	top: 105px;
+	background-color: #FFFFFF;
+}
+
+#alerts{
+	float: right;
+	width: 35%;
+	margin: 0px;
+	padding: 0px;
+	border-left: solid 1px #cccccc;
+	border-bottom: solid 1px #cccccc;
+	border-radius: 7px;
+}
+
+#pro{
+	border: solid 1px #ccc;
+	border-radius: 3px;
+	position: relative;
+	background: #F3F3F3;
+	left: 7px;
+	top: -28px;
+	width: 35%;
+
+} 
+
+#standard{
+	border: solid 1px #ccc;
+	border-radius: 3px;
+	position: relative;
+	background: #F3F3F3;
+	right: -382px;
+	top: -267px;
+	width: 30%;
+}
+
+#basic{
+	border: solid 1px #ccc;
+	border-radius: 3px;
+	position: relative;
+	background: #F2F2F2;
+	right: -705px;
+	top: -428px;
+	width: 29%;
+}
+	
+
+#content{
+	float: left;
+	width: 55%;
+	left: 122px;
+}
+
+#pricing{
+	float: left;
+	width: 100%;
+	border-top: 2px solid #FFECEC;
+	border-radius: 3px;
+}
+
+#image_logo{
+	float: right;
+	padding: 0 0 0 10px;
+	margin: 0px;
+}
+
+#siteName{
+	margin: 0px;
+	padding: 0 0 0 10px;
+}
+
+#shared_network{
+	border-radius: 1px;
+	border-top: 1px solid #ccc;
+	text-align: center;
+	background: #F1F1F1;
+	padding: 10px 5px 0px 10px;
+}
+
+#customer_network{
+	border-radius: 1px;
+	border-bottom: solid 1px #ccc;
+}
+
+#current_alert{
+	border-radius: 1px;
+	border: solid 1px #CCC;
+}
+
+.alert{
+	border-bottom: 1px solid #CCC;
+	border-radius: 2;
+}
+
+.product_alert {
+	text-align: center;
+}
+
+#pageNav{
+	padding: 0px 0px 5px 10px;
+	border-bottom: solid 1px #CCC;
+	color: #cccccc;
+}
+
+#pageNav image{
+	display: block;
+}
+
+#pageNav a{
+	font-size: 90%;
+	padding: 0 4px 0 0;
+}
+
+#pageName{
+	margin: 0px;
+	padding: 0px 0px 5px 10px;
+}
+
+#productalert{
+	position: absolute;
+	left:720px;
+	top:-1px;
+	color: #cccccc;
+	float: right;
+}
+
+#siteInfo{
+	clear: both;
+	border: solid 1px #cccccc;
+	font-size: 75%;
+	color: #cccccc;
+	padding: 10px 10px 10px 10px;
+}
+
+#productAlerts{
+	position:relative;
+	margin: 0px;
+	padding: 0px;
+	border-bottom: solid 1px #cccccc;
+	font-size: 90%;
+}
+
+#productAlerts h3{
+	padding: 10px 0px 2px 10px;
+}
+
+#productAlerts a{
+	display: block;
+	border-top: solid 1px #cccccc;
+	padding: 2px 0px 2px 10px;
+}
+
+#productAlerts a:hover{
+	background-color: #dddddd;
+}
+
+#alert {
+	float: right;
+	width: 35%;
+	border-left: 1px solid #cccccc;
+	border-bottom: 1px solid #cccccc;
+	padding-right: 10px;
+	border-radius: 7px;
+	position: absolute;
+	top: 100px;
+	left: 650px;
+}
+
+#headline{
+    float:left;
+	width: 20%;
+	padding-right: 10px;
+}
+
+
+#headlines{
+    float:right;
+	width: 35%;
+	border-left: 1px solid #cccccc;
+	border-bottom: 1px solid #cccccc;
+	padding-right: 10px;
+	border-radius: 7px;
+}
+
+#headlines p{
+	padding: 5px 0px 5px 0px;
+}
+
+#search{
+	padding: 5px 0px 5px 10px;
+	border-bottom: solid 1px #cccccc;
+	font-size: 90%;
+}
+
+#search form{
+	margin: 0px;
+	padding: 0px;
+}
+
+#search label{
+	display: block;
+	margin: 0px;
+	padding: 0px;
+}
+
+#postAlert{
+	font-size: 90%;
+	padding: 0 4px 0 0;
+}
+
+#image_holder{
+	float: left;
+	border-radius: 2px;
+	border: solid 1px #ccc;
+	text-align: center;
+	padding: 10px 5px 5px 10px;
+}
+
+#recommend{
+	background: #FFFFFF;
+	float: left;
+}
+
+#network{
+	float: left;
+	border-radius: 1px;
+	border-top: solid 1px #ccc;
+}
+
+#networks{
+	float: left;
+	border-radius: 1px;
+	border: solid 1px #ccc;
+	background: #F1F1F1;
+}
+
+.container {
+	width: 100%;
+}
+
+.details {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	line-height: 20px;
+	font-weight: bold;
+	color: #00666;
+}
+
+.signin {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color:#006699;
+	line-height: 18px;
+	background-color: #F3F3F3;
+	width: 500px;
+	border-radius: 7px;
+}
+
+.error_explanation {
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: #C0C7F5;
+  	color: #006600;
+	font-weight: 600;
+	width: 100%;
+	text-align: center;
+	font-size: 12px;
+	border-radius: 6px;
+	border-top: #FFFFFF solid thick;
+	border-bottom: #FFFFFF solid thick;
+	border-left: #F8F8F8 solid thick;
+	border-right: #F8F8F8 solid thick;
+}
+
+.supplier_error_explanation {
+	font-family:Arial, Helvetica, sans-serif;
+	background-color: #C0C7F6;
+	color: #006601;
+	font-weight: 600;
+	font-size: 12px;
+	width: 100%;
+	text-align: center;
+	font-size: 12;
+	border-radius: 6px;
+	border-top: #FFFFF9 solid thick;
+	border-bottom: #FFFFF9 solid thick;
+	border-left: #F8F8F7 solid thick;
+	border-right: #F8F8F7 solid thick;
+}
+
+.contact_error_explanation {
+	font-family:Arial, Helvetica, sans-serif;
+	background-color: #C0C7F6;
+	color: #006601;
+	font-weight: 600;
+	font-size: 12px;
+	width: 70%;
+	text-align: center;
+	font-size: 12;
+	border-bottom: solid #FFFFD7 thick;
+	border-left: solid #FFFFD7 thick;
+	border-top: solid #FFFFD7 thick;
+	border-right: solid #FFFFD7 thick;
+	border-radius: 6px;
+}
+
+.subtitle {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	line-height: 22px;
+	font-weight: bold;
+  	color: #006666;
+}
+
+.status {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	line-height: 20px;
+	font-weight: bold;
+	color: #006600;
+}
+
+.listing{
+	padding: 0px 0px 10px 10px;
+	font-size: 80%;
+}
+
+.listing h3{
+	padding: 30px 0px 5px 0px;
+	text-align: center;
+}
+
+.listing image{
+	float:left;
+	padding: 10px 10px 0px 0px;
+}
+
+.story{ 
+	clear: both;
+	padding: 10px 0px 0px 10px;
+	font-size: 80%;
+}
+
+.story p{
+	padding: 0px 0px 10px 0px;
+}
+
+.network{
+	clear: both;
+	padding: 10px 0px 0px 10px;
+	font-size: 90%;
+}
+
+.pro{
+	border-bottom: 1px solid #ccc;
+	border-radius: 3px;
+	background: #EBF8FE;
+	text-align: center;
+}
+
+.prodetails{
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	border-radius: 3px;
+	background: #EDFDFE;
+	height: 75%;
+}
+
+.standard{
+	border-bottom: 1px solid #ccc;
+	border-radius: 3px;
+	background: #DBFDE3;
+	text-align: center;
+}
+
+.standarddetails{
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	border-radius: 3px;
+	background:#EDFFE1;
+	height: 75%;
+}
+
+.basic{
+	border-bottom: 1px solid #ccc;
+	border-radius: 3px;
+	background: #FCFEF1;
+	text-align: center;
+}
+
+.basicdetails{
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	border-radius: 3px;
+	background: #F4FDD5;
+	height: 75%;
+}
+
+.titlebar{
+	font-family: "Times New Roman", Times, serif;
+	font-size: 16px;
+	font-weight: 600;
+	text-align: center;
+	color: #FFFFFF;
+    background-color: #336699;
+	border-bottom: solid #FFFFD7 thick;
+	border-left: solid #FFFFD7 thick;
+	border-top: solid #FFFFD7 thick;
+	border-right: solid #FFFFD7 thick;
+	border-radius: 6px;
+	height: 40px;
+	width: 60%;
+}
+
+.alertbar{
+	font-family: "Times New Roman", Times, serif;
+	font-size: 16px;
+	font-weight: 600;
+	text-align: center;
+	color: #FFFFFF;
+    background-color: #336699;
+	border-bottom: solid #FFFFD7 thick;
+	border-left: solid #FFFFD7 thick;
+	border-top: solid #FFFFD7 thick;
+	border-right: solid #FFFFD7 thick;
+	border-radius: 6px;
+	height: 20px;
+	width: 95%;
+}
+
+.account_field {
+	margin-bottom: 9px;
+	size: 12px;
+	font-size: 12px;
+	font-weight:bold;
+	font-family:Arial, Helvetica, sans-serif;
+	color: #009900;
+}
+
+.dingbat{
+	font-family: Arial, sans-serif;
+	background-color: #99CC99;
+	color: #006666;
+	font-weight: bolder;
+	font-size: 80%;
+	text-align: center;
+	border-radius: 2px;
+}
+
+.feature{
+	padding: 0px 0px 10px 10px;
+	font-size: 80%;
+}
+
+.feature.h3{
+	padding: 30px 0px 5px 0px;
+	text-align: center;
+}
+
+.feature img{
+	float: left;
+	padding: 10px 10px 0px 0px;
+}
+
+.style2{
+	color: #006699;
+}
+
+.name {
+	font:Arial, sans-serif;
+	display: block;
+	font-size: 80%;
+	color: #ccc;
+}
+
+.product{
+	font:Arial, Helvetica, sans-serif;
+	display: block;
+	font-size: 70%;
+	color: #006666;
+	font-weight: bold;
+}
+
+.profile {
+	font:Georgia, "Times New Roman", Times, serif;
+	font-size: 12px;
+	font-weight: bold;
+	color:#006666;
+}
+
+.input select {
+	width: 60%;
+}
+
+h1.user{
+	margin-bottom: 0.3em;
+}
+
+table.users{
+	margin-top: 1em;
+}
+
+table.users tr{
+	height: 70px;
+}
+
+table.users tr td.user_image{
+	border-top: solid #ccc 1px;
+	cell-spacing: 1%;
+	vertical-align: top;
+	padding-top: 10px;
+}
+
+table.users tr td.supplier span.timestamp{
+	display: block;
+	font-size: 80%;
+	color: #ccc;
+}
+
+h1.user_account {
+	margin-bottom: 0.3em;
+}
+
+table.user_accounts{
+	margin-top: 1em;
+}
+
+table.user_accounts tr{
+	height: 70px;
+}
+
+table.user_accounts tr td.user_account span.timestamp{
+	display: block;
+	font-size: 80%;
+	color: #ccc;
+}
+
+h1.supplier{
+	margin-bottom: 0.3em;
+}
+
+table.suppliers{
+	margin-top: 1em;
+	border-top: 1px solid #ccc;
+	border-radius: 6px;
+}
+
+table.suppliers tr{
+	height: 70px;
+}
+
+table.suppliers tr td.supplier_image{
+	border-top: solid #ccc 1px;
+	cell-spacing: 1%;
+	vertical-align: top;
+	padding-top: 10px;
+}
+
+table.suppliers tr td.supplier span.timestamp{
+	display: block;
+	font-size: 80%;
+	color: #ccc;
+}
+
+h1.user_contact{
+	margin-bottom: 0.3em;
+}
+
+table.user_contacts{
+	margin-top: 1em;
+	border-top: 1px solid #ccc;
+	border-radius: 6px;
+}
+
+table.user_contacts tr{
+	height: 70px;
+}
+
+table.user_contacts tr td.user_contact span.timestamp{
+	display: block;
+	font-size: 80%;
+	color: #ccc;
+}
+
+h1.listing{
+	margin-bottom: 0.3em;
+}
+
+table.listings{
+	margin-top: 1em;
+}
+
+table.listings tr{
+	height: 70px;
+}
+
+table.listings tr td.listing{
+	border-top: solid #ccc 1px;
+	cell-spacing: 1%;
+	vertical-align: top;
+	padding-top: 10px;
+	background: #F0F5F0;
+}
+
+table.listings tr td.listing span.timestamp{
+	display: block;
+	font-size: 80%;
+	color: #ccc;
+}
+
+h1.product_alert{
+	margin-bottom: 0.3em;
+}
+
+table.product_alerts{
+	margin-top: 1em;
+}
+
+table.product_alerts tr{
+	height: 70px;
+}
+
+table.product_alerts tr td.product_alert{
+	border-top: 1px solid #ccc;
+	vertical-align: top;
+	padding-top: 10px;
+}
+
+table.product_alerts tr td.user_alert{
+	border-top: 1px solid #ccc;
+	vertical-align: top;
+	padding-top: 10px;
+	background: #FFFFEA;
+}
+	
+h1.alert{
+	margin-bottom: 0.3em;
+}
+
+table.alerts{
+	margin-top: 1em;
+}
+
+table.alerts tr{
+	height: 70px;
+}
+
+table.alerts tr td.alert_image{
+	border-top: solid #ccc 1px;
+	cell-spacing: 1%;
+	vertical-align: top;
+	padding-top: 10px;
+}
+
+table.alerts tr td.alert span.timestamp{
+	display: block;
+	font-size: 80%;
+	color: #ccc;
+}		
+
+h1.account{
+	margin-bottom: 0.3em;
+}
+
+table.accounts{
+	margin-top: 1em;
+}
+
+table.accounts tr{
+	height: 70px;
+}
+
+table.accounts tr td.account_image{
+	border-top: solid #ccc 1px;
+	cell-spacing: 1%;
+	vertical-align: top;
+	padding-top: 10px;
+}
+
+table.accounts tr td.account span.timestamp{
+	display: block;
+	font-size: 80%;
+	color: #ccc;
+}
+
+table.update_account {
+	height: 70px;
+}
+
+table.update_account tr {
+	height: 70px
+}
+
+table.update_account tr td.account {
+	border-top: 1px solid #ccc;
+	vertical-align: top;
+	padding-top: 10px;
+	background: #F0F5F0;
+}
+
+div.user_details, div.actions {
+	font:14px Arial, Helvetica, sans-serif;
+	color: #5C743D;
+	letter-spacing:0.1em;
+	line-height:15px;
+	text-align: center;
+
+}
+

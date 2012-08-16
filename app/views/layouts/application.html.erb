@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%= title %></title>
+		<%= csrf_meta_tag %>
+		<%= render 'layouts/stylesheets' %>
+		<%= javascript_include_tag 'jquery-1.6.2.min' %>
+	</head>
+	<body>
+		<div id="siteHolder">
+			<div id="image_logo">
+				<%= render 'layouts/image' %>
+			</div>
+		</div>
+		<div id="siteNav">
+			<%= render 'layouts/pagenav' %>
+			<%= render 'layouts/alert' %>
+			<section class="container">
+				<% flash.each do |key, value| %>
+					<div class="titlebar">
+						<div class="flash <%= key %>"><%= value %></div>
+					</div>					
+				<% end %>
+				<%= yield %>
+			</section><br/>
+			<%= render 'layouts/siteinfo' %>
+		</div>
+	</body>
+</html>

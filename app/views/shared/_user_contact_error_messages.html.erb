@@ -1,0 +1,14 @@
+<% if @user_contact.errors.any? %>
+	<div class="contact_error_explanation">
+		<% if @user_contact.errors.count > 1 %>
+			<% @user_contact.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+			<% end %>
+		<% else %>
+			<% @user_contact.errors.full_messages.each do |msg| %>
+				<%= msg %>
+			<% end %>
+		<% end %>
+	</div>
+<% end %>
+

@@ -1,0 +1,42 @@
+<% if current_user?(user_alert.user) %>
+	<% if user_alert.expires_at > Time.now %>
+		<tr>
+			<td class="user_alert">
+				<div class="product_alert">
+					<span class="product"><%= user_alert.title %></span><br/>
+					<%= image_tag user_alert.user.profile_photo.profile_image.url(:thumb) %><br/>
+					<span class="name"><%= user_alert.user.first_name %></span>
+				</div>
+			</td>	
+			<td class="user_alert"><br/><br/>
+				<div class="product_alert">
+					<span class="name">Posted: <%= time_ago_in_words(user_alert.created_at) %> ago.</span>
+					<span class="name">By:  you </span>
+					<span class="name">Target location: <%= user_alert.target_location %></span>
+					<span class="product"><%= link_to 'close', user_alert, :method => :delete, :confirm => "Your product alert will be removed. Are you sure?", :title => user_alert.title %></span>
+				</div>
+			</td>
+		</tr>
+	<% end %>
+<% else %>
+	<% if user_alert.expires_at > Time.now %>
+		<tr>
+			<td class="product_alert">
+				<span class="product"><%= user_alert.title %></span><br/>
+				<%= image_tag user_alert.user.profile_photo.profile_image.url(:thumb) %><br/>
+				<div class="product_alert">
+					<span class="name"><%= user_alert.user.first_name %></span>
+				</div>
+			</td>	
+			<td class="product_alert"><br/><br/>
+				<span class="name">Posted: <%= time_ago_in_words(user_alert.created_at) %> ago.</span>
+				<span class="name">By: <%= user_alert.user.first_name %></span>
+				<span class="name">Target location: <%= user_alert.target_location %></span>
+				<span class="product"><%= link_to 'recommend', new_user_alert_recommender_path(user_alert), { :method => :get, :remote => true } %> | <%= link_to 'contact', new_user_contact_path(current_user, :contact_id => user_alert.user_id, :contact_alert_id => user_alert.id, :contact_about_alert => user_alert.title), { :method => :get, :remote => true } %></span>	   
+			</td>
+		</tr>
+	<% end %>
+<% end %>
+
+
+

@@ -1,0 +1,29 @@
+<h2>Manage invitations</h2><br/>
+
+<div class="content">
+	<div class="signin">
+		<%= form_for resource, :as => resource_name, :url => invitation_path(:supplier), :html => {:method => :post} do |f| %>
+			<table border="0" cellspacing="2" cellpadding="1" width="260">
+				<tr>
+					<td>
+						<div class="field">
+							<%= f.label :email, "Email:" %>
+						</div>
+					</td>
+					<td>
+						<div class="field">
+							<%= f.text_field :email %>
+						</div>
+					</td>
+					<td>
+						<div class="field">
+							<%= f.submit "Send an invitation" %>
+						</div>
+					</td>
+				</tr>
+			</table>
+		<% end %>
+		<%= render 'shared/supplier_error_messages' %>
+	</div> 
+</div>
+

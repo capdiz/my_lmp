@@ -1,0 +1,25 @@
+<h2>Change your profile image</h2><br?>
+<%= form_for(@user, :action => :update_image, :html => { :multipart => true}) do |f| %>
+	<table border="0" cellspacing="2" cellpadding="2">
+		<tr>
+			<td>
+				<div class="field">
+					<label>Add image:</label>
+				</div>
+			</td>
+			<td>
+				<div class="field">
+					<%= f.file_field :user_image %>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td align="center" colspan=3>
+				<div class="field">
+					<%= f.submit "Change" %>
+				</div>
+			</td>
+		</tr>
+	</table>
+<% end %>
+

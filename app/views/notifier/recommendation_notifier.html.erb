@@ -1,0 +1,12 @@
+<p>Hi <%= @recommendation.email %></p>
+
+<p><%= @recommender.first_name + ' ' + @recommender.last_name %> just recommended their supplier <%= @recommended.first_name %> to you on mylmp.co an invite only marketplace where users get to invite or recommend their own suppliers. 
+
+<p>To check this supplier recommendation please follow the link below. </p>
+
+<p><%= link_to 'check out recommendation', recommendation_accept_recommendation_url(@recommendation, :recommendation_token => @recommendation.recommendation_token) %></p>
+
+<p>Please ignore this email if it wasn’t meant for you.</p>
+
+<p>Regards.</p>
+<p>My Local Online Marketplace (mylmp) Team</p>

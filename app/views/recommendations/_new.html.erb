@@ -1,0 +1,27 @@
+<h2>Recommend new user</h2>
+<%= form_for(@recommendation) do |f| %>
+	<%= f.hidden_field :recommended_to_id, :value => @supplier.id %>
+	<%= f.hidden_field :recommendation_sent_at, :value => Time.now %>
+	<%= f.hidden_field :recommended_listing_id, :value => @listing.id %>
+	<table border="0" cellspacing="2" cellpadding="1" width="260">
+		<tr>
+			<td>
+				<div class="field">
+					<label>To: </label>		
+				</div>
+			</td>
+			<td>
+				<div class="field">
+					<%= f.text_field :email, :size => "25" %>
+				</div>
+			</td>
+			<td>
+				<div class="field">
+					<%= f.submit "Send" %>
+				</diV>
+			</td>
+		</tr>
+	</table>
+	<%= render 'shared/recommendation_error_messages', :object => f.object %>
+<% end %>
+

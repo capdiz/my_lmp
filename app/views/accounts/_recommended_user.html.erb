@@ -1,0 +1,20 @@
+<%= @recommended_users.each_slice(2) do |recommended_users| %>
+	<h2>Shared network</h2>
+	<tr>
+		<% recommended_users.zip(["left", "right"]).each do |recommended_user, side| %>
+			<td>
+				<div id="shared_network">
+					<ul>
+						<% if recommended_user.profile_photo.nil? %>
+							<%= image_tag recommended_user.user_image.url(:thumb) %><br/>
+							<span class="details"><%= link_to 'View', user_path(recommended_user) %></span>
+						<% else %>
+							<%= image_tag recommended_user.profile_photo.profile_image.url(:thumb) %><br/>
+							<span class="details"><%= link_to 'View', user_path(recommended_user) %></span>
+						<% end %>
+					</ul>
+				</div>
+			</td>
+		<% end %>
+	</tr>
+<% end %>

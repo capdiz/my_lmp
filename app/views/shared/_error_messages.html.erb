@@ -1,0 +1,12 @@
+<% if @user.errors.any? %>
+	<div class="error_explanation">
+		<% if @user.errors.count > 1 %>
+			<% @user.errors.full_messages.each do |msg| %>						<li><%= msg %></li>
+			<% end %>
+		<% else %>
+			<% @user.errors.full_messages.each do |msg| %>
+				<%= msg %>
+			<% end %>
+		<% end %>
+	</div>
+<% end %>

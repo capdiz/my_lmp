@@ -1,0 +1,73 @@
+<h1 align="left"> Sign up here! </h1><br/>
+<%= form_for(@user) do |f| %>
+	<table border="0" cellspacing="0" cellpadding="0" width="260">
+		<tr>
+			<td>
+				<div class="field">
+					<%= f.label :first_name, "First name:" %>
+				</div>
+			</td>
+			<td>
+				<div class="field">
+					<%= f.text_field :first_name, :size => "20" %>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div class="field">
+					<%= f.label :last_name, "Last name:" %>
+				</div>
+			</td>
+			<td>
+				<div class="field">
+					<%= f.text_field :last_name, :size => "20", :color => "#F5F5F5" %>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div class="field">
+					<%= f.label :email, "Email:" %>
+				</div>
+			</td>
+			<td>
+				<div class="field">
+					<%= f.text_field :email, :size => "20" %>
+				</div>
+			</td>
+		</tr>	
+		<tr>
+			<td>
+				<div class="field">
+					<%= f.label :password, "Password:" %>
+				</div>
+			</td>
+			<td>
+				<div class="field">
+					<%= f.password_field :password, :size => "20" %>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div class="field">
+					<%= f.label :password_confirmation, "Confirm password:" %>
+				</div>
+			</td>
+			<td>
+				<div class="field">
+					<%= f.password_field :password_confirmation, :size => "20" %>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td align="center" colspan="3">
+				<%= f.submit "Sign up" %>
+			</td>
+		</tr>
+	</table>
+	<%= render 'shared/error_messages' %>
+<% end %>
+<br/>
+

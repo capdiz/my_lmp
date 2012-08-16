@@ -1,0 +1,25 @@
+<h3><%= current_supplier.first_name %> Account Overview</h3>
+<% unless @supplier_user.nil? %>
+	<div id="headlines">
+		<div class="dingbat">Customer Network</div>
+		<div id="customer_network">
+			<table class="customer_network" summary="Customer network">
+				<%= render 'user' %>
+			</table>
+		</div><br/>
+		<table class="customer_network" summary="Shared customer network">
+			<%= render 'recommended_user' if !@recommended_users.empty? %>
+		</table>
+	</div>
+<% end %>
+<div id="content">
+	<% unless @account.nil? %>
+		<table class="listings" summary="Account details">				
+			<%= render @account %>					
+		</table><br/><br/>
+		<table class="update_account" summary="Update account">
+			<%= render 'edit' %>
+		</table>
+	<% end %><br/>		
+</div>
+

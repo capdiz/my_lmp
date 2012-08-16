@@ -1,0 +1,14 @@
+<% if @recommendation.errors.any? %>
+	<div id="error_explanation">
+		<% if @recommendation.errors.count > 1 %>
+			<% @recommendation.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+			<% end %>
+		<%else %>
+			<% @recommendation.errors.full_messages.each do |msg| %>
+				<%= msg %>
+			<% end %>
+		<% end %>
+	</div>
+<% end %>
+

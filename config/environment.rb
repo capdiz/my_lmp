@@ -1,0 +1,14 @@
+# Load the rails application
+require File.expand_path('../application', __FILE__)
+
+# Initialize the rails application
+MyLmp::Application.initialize!
+
+  ActionMailer::Base.smtp_settings = { 
+	:address =>	"smtp.gmail.com",
+	:port =>	587,
+	:user_name =>	'kansspike05@gmail.com',
+	:password =>	'kusasirwamaurice',
+	:authentication => :plain,
+	:enable_starttls_auto => true
+  }	

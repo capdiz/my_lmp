@@ -1,0 +1,129 @@
+<% if user_signed_in? %>
+	<table cellspacing="0" cellpadding="0">
+		<% if current_user.profile_photo.nil? %>
+			<tr>
+				<td>
+					<h3>Hi <%= current_user.first_name%>!</h3><br/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div id="image_holder">
+						<%= image_tag current_user.user_image.url(:thumb) %><br/>
+						<span class="details"><%= link_to 'That ain\'t you?', new_profile_photo_path(current_user) %></span>
+					</div>
+				</td>
+			</tr>
+		<% else %>
+			<tr>
+				<td>
+					<h3>Hi <%= current_user.first_name%>!</h3><br/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div id="image_holder">
+						<%= image_tag current_user.profile_photo.profile_image.url(:small) %><br/>
+						<span class="details"><%= link_to 'Change photo?', edit_profile_photo_path(current_user) %></span>
+					</div>
+				</td>
+			</tr>
+		<% end %>
+	</table><br/>
+	<% unless @alerts.empty? %>
+		<div id="content">
+			<table class="alerts" summary="Product alerts">
+				<tr>
+					<td>
+						<div class="alertbar">Your Supplier Alerts</div>
+					</td>
+				</tr>
+				<%= render @alerts %>
+			</table><br/>
+		</div>
+	<% end %>
+	<% unless @recommended_supplier_alerts.empty? %>
+		<div id="alert">
+			<div class="dingbat">Recommended Suppliers</div>
+			<table class="product_alerts" summary="Recommended suppliers">
+				<%= render @recommended_supplier_alerts %>
+			</table><br/>
+			<% unless @user_contacts.empty? %>
+				<table class="user_contacts" summary="User contacts">
+					<h2><div class="details">User Contacts</div></h2>
+					<%= render @user_contacts %>
+				</table>
+			<% end %>
+		</div>
+	<% end %>
+	<div id="content">
+		<% unless @user_alerts.empty? %>
+			<h2>Product alerts</h2>
+			<table class="product_alerts" summary="Product alerts">
+				<%= render @user_alerts %>
+			</table><br/>
+		<% end %>
+	</div>
+
+<% elsif supplier_signed_in? %>
+	<table cellspcing="1" cellpadding="1">
+		<% if current_supplier.supplier_image.nil? %>
+			<tr>
+				<td>
+					<h3>Hi <%= current_supplier.first_name %>!</h3><br/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div id="image_holder">
+						<%= image_tag current_supplier.supplier_image(:thumb) %><br/>
+						<%= link_to 'That ain\'t you', new_profile_photo_path(current_supplier) %>
+					</div>
+				</td>
+			</tr>
+		<% else %>
+			<tr>
+				<td>
+					<h3>Hi <%= current_supplier.first_name %>!</h3><br/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div id="image_holder">
+						<%= image_tag current_supplier.profile_photo.profile_image.url(:small) %><br/>
+						<span class="details"><%= link_to 'Change photo?', edit_profile_photo_path(current_supplier) %></span>
+					</div>
+				</td>
+			</tr>
+		<% end %>
+	</table><br/>
+
+	<div id="content">
+		<div class="Layer3">
+			<div class="sidebar">
+				<table class="listings" summary="Supplier listings">
+					<%= render @listings %>
+				</table>
+				<%= will_paginate @listings %>
+			</div>
+		</div>
+	</div>
+<% else %>
+	<div id="headlines">
+		<%= render 'shared/new'%>
+	</div><br/>
+	<div id="content">
+		<h3 class="style2">Bringing your local dope-man online!</h3>	
+		<div class="feature">
+			<ul>
+				<li><strong>First you sign up on the right hand side of this page. Sshh! Don't tell everyone. It's free!</strong></li><br />
+				<li><strong>Then invite your go to guy. That guy you feel always comes through when you need something (they have to be legit of course). They might be your friend who is a supplier, a local corner store or shop or that big time supermarket for you to get a supplier network.</strong></li><br />
+				<li><strong>Good to go! You can now start shopping and browsing easily within your supplier network, recommend your supplier/s to other users or get recommended by other users to their supplier network/s incase your supplier doesn't come through once in a while.</strong></li>
+			</ul>
+			<p>Let's say we are bringing your legitimate neighborhood hustler online. At mylmp (read my local marketplace) you decide whom to do business with by inviting your favorite local supplier to mylmp in order for you and other users (users you recommend) to have a hustle free supplier browsing experience with yours or their suppliers. We are basically bringing your local shopping experience online.</p>
+		</div>
+	</div>
+<% end %>
+
+
+

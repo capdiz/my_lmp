@@ -1,0 +1,15 @@
+<% if @supplier.errors.any? %>
+	<div id="supplier_error_explanation">
+		<% if @supplier.errors.count > 1 %>
+			<% @supplier.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+			<% end %>
+		<% else %>
+			<% @supplier.errors.full_messages.each do |msg| %>
+				<%= msg %>
+			<% end %>
+		<% end %>
+	</div>
+<% end %>
+
+

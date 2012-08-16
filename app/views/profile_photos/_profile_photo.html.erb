@@ -1,0 +1,3 @@
+<% for profile_photo in @profile_photos do %>
+	<%= image_tag profile_photo.profile_image.url(:thumb) %>
+<% end %>

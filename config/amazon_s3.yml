@@ -1,0 +1,12 @@
+development:
+ bucket: dev.mylmp.us.data
+ access_key_id: AKIAIEB6BYEKWN4CFGEA
+ secret_access_key: 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
+
+test:
+        <<: *development
+
+production:
+ bucket: mylmp.us.data
+ access_key_id: AKIAIEB6BYEKWN4CFGEA
+ secret_access_key: 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

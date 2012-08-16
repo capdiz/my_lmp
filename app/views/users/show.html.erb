@@ -1,0 +1,126 @@
+<table cellspacing="2" cellpadding="2">
+	<% if correct_user?(@user) %>
+		<% if @user.profile_photo.nil? %>
+			<tr>
+				<td>
+					<h3>Hi <%= @user.first_name%>!</h3> 
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div id="image_holder">
+						<%= image_tag @user.user_image.url(:thumb) %></br>
+						<span class="details"><%= link_to 'That ain\'t you?', new_profile_photo_path(current_user) %></span>
+					</div>
+				</td>
+			</tr>
+		<% else %>
+			<tr>
+				<td>
+					<h3>Hi <%= @user.first_name %></h3>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div id="image_holder">
+						<%= image_tag @user.profile_photo.profile_image.url(:small) %><br/>
+						<span class="details"><%= link_to 'Change photo?', edit_profile_photo_path(current_user) %></span>
+					</div>
+				</td>
+			</tr>
+		<% end %>
+	<% else %>
+		<% if @user.profile_photo.nil? %>
+			<tr>
+				<td>
+					<h3><%= @user.first_name%>'s profile</h3> 
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div id="image_holder">
+						<%= image_tag @user.user_image.url(:thumb) %></br>
+						<div class="name">Oops! This ain't <%= @user.first_name %>?</div>
+					</div>
+				</td>
+				<td>
+					<% if @user.location.nil? %>
+						<span class="profile">Location: </span> locked.
+					<% else %>
+						<span class="profile">Location: </span><%= @user.location %>
+					<% end %><br/>
+					<span class="profile">Joined:</span> <%= time_ago_in_words(@user.created_at) %> ago.<br/>
+					<span class="profile">Supplier network: </span><%= @suppliers.count %> suppliers.<br/>
+					<span class="profile">Shared network: </span><%= @recommended_suppliers.count %> recommended suppliers.
+				</td>
+
+			</tr>
+		<% else %>
+			<tr>
+				<td>
+					<h3><%= @user.first_name %>'s profile</h3>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div id="image_holder">
+						<%= image_tag @user.profile_photo.profile_image.url(:small) %><br/>
+						<div class="name"><%= @user.first_name %> <%= @user.last_name %> </div>
+					</div>
+				</td>
+				<td>
+					<% if @user.location.nil? %>
+						<span class="profile">Location: </span> locked.
+					<% else %>
+						<span class="profile">Location: </span><%= @user.location %>
+					<% end %><br/>
+					<span class="profile">Joined:</span> <%= time_ago_in_words(@user.created_at) %> ago.<br/>
+					<span class="profile">Supplier network: </span><%= @suppliers.count %> suppliers.<br/>
+					<span class="profile">Shared network: </span><%= @recommended_suppliers.count %> recommended suppliers.
+				</td>
+			</tr>
+		<% end %>
+	<% end %>
+</table><br/>
+<% if user_signed_in? %>
+	<% if correct_user?(@user) %>
+		<% if !@alerts.empty? %>
+			<div id="alert">
+				<div class="dingbat">Product Alerts</div>
+				<table class="alerts" summary="Product alerts">
+					<%= render @alerts %>
+				</table>
+			</div>
+		<% elsif !@recommended_alerts.empty? %>
+			<div id="alert">
+				<div class="dingbat">Recommended Alerts</div>
+				<table class="alerts" summary="Recommended alerts">
+					<%= render @recommended_alerts %>
+				</table>
+			</div>
+		<% end %>
+	<% end %>
+<% end %>
+<div id="content">
+	<% if correct_user?(@user) %>
+		<div id="network">
+			<% unless @suppliers.empty? %>
+				<%= render 'suppliers/supplier' %>
+			<% else %>
+				<span class="details">You currently have no supplier network. Would you like to <%= link_to 'invite a supplier', new_supplier_invitation_path %> you know now 
+					<% if @recommended_suppliers.nil? %>
+						<%= link_to 'or you could request for an invite', "#" %> from other users around you.
+					<% end %>
+				</span>
+			<% end %>
+			<br/><br/>
+		</div>
+		<div id="network">
+			<% unless @recommended_suppliers.empty? %>
+				<%= render 'recommendations/recommended_supplier' %>
+			<% end %><br/>
+		</div>
+	<% end %>
+</div>
+
+

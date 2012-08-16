@@ -1,0 +1,10 @@
+<div id="content">
+	<% unless @user_alerts.empty? %>
+		<h2>Product alerts</h2>
+		<table class="product_alerts" summary="Product alerts">
+			<%= render @user_alerts %>
+		</table><br/>
+	<% end %>
+</div>
+
+

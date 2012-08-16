@@ -1,0 +1,13 @@
+<% if @listing.errors.any? %>
+	<div class="supplier_error_explanation">
+		<% if @listing.errors.count > 1 %>
+			<% @listing.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+			<% end %>
+		<% else %>
+			<% @listing.errors.full_messages.each do |msg| %>
+				<%= msg %>
+			<% end %>
+		<% end %>
+	</div>
+<% end %>

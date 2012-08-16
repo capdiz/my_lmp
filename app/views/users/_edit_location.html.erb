@@ -1,0 +1,39 @@
+<h2>Update your location details</h2><br/>
+<div class="details">
+	<%= form_for(@user, :url => update_location_user_path(current_user)) do |f| %>
+		<table border="0" cellspacing="2" cellpadding="2" width="300">
+			<tr>
+				<td>
+					<div class="field">
+						<label>Country: </label>
+					</div>
+				</td>
+				<td>
+					<div class="input">
+						<%= country_select("user", 'country', {}, {}, { :class => "country_select" }) %>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="field">
+						<label>City: </label>
+					</div>
+				</td>
+				<td>
+					<div class="field">
+						<%= f.text_field :city, :size => 20 %>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2">
+					<div class="field">
+						<%= f.submit "Update" %>
+					</div>
+				</td>
+			</tr>
+		</table>
+	<% end %>
+</div>
+

@@ -1,0 +1,20 @@
+<%= form_for(@user_contact, :remote => true) do |f| %>
+	<table class="user_contacts" cellspacing="0" summary="User contacts">
+		<h2>Add contact</h2>
+		<%= f.hidden_field :contact_id, :value => params[:contact_id] %>
+		<%= f.hidden_field :contact_alert_id, :value => params[:contact_alert_id] %>
+		<%= f.hidden_field :contact_about_alert, :value => params[:contact_about_alert] %>
+		<%= f.hidden_field :reply_to_id, :value => current_user.email %>
+		<tr>
+			<td>			
+				<div class="name">Responding to: <%= params[:contact_about_alert] %></div><br/>
+				<div class="details"><%= f.label :contact_message, "Message" %></div>
+				<div class="name">**make it short and clear.</div>
+				<div class="details"><%= f.text_area :contact_message, :rows => 3, :cols => 20, :height => 5 %></div>
+				<div class="name">**shouldn't exceed 140 characters</div>			
+				<div class="details"><%= f.submit "Send message" %></div>
+			</td>
+		</tr>
+	</table><br/>
+	<%= render 'shared/user_contact_error_messages' %>
+<% end %>

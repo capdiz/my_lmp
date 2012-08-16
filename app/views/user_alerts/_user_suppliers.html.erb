@@ -1,0 +1,26 @@
+<%= form_for user_alert.recommender.build(:recomended_to_supplier_id => supplier.id, :recommended_by_user_id => current_user.id, :recommended_by_name => current_user.first_name), :remote => true do |f| %>
+	<%= f.hidden_field :recommended_to_supplier_id %>
+	<%= f.hidden_field :recommended_by_user_id %>
+	<%= f.hidden_field :recommended_by_name %>
+	<table class="suppliers" summary="User supplier">
+		<div class="details"><h2>Supplier network</h2></div>
+		<%= @suppliers.each_slice(3) do |suppliers| %>
+			<tr>
+				<% suppliers.zip(["left", "right"]).each do |supplier, side| %>
+					<td>
+						<ul>
+							<% if !supplier.city.nil? %>
+								<div id="image_holder">
+									<%= image_tag supplier.profile_photo.profile_image.url(:thumb) %><br/>
+									<span class="name"><%= supplier.first_name %> | location <%= supplier.city %></span><br/>
+									<span class="product"><%= f.submit "Recommend" %></span>
+								</div>
+							<% end %>
+						</ul>
+					</td>
+				<% end %>
+			</tr>
+		<% end %>
+	</table>
+<% end %>	
+

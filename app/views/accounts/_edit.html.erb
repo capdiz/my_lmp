@@ -1,0 +1,20 @@
+<%= form_for(@account) do |f| %>
+	<tr>
+		<h2>Update Account</h2>
+		<td class="account">
+			<div class="details">
+				<%= f.label :account_type %>
+			</div>
+		</td>
+		<td class="account">
+			<div class="account_field">
+				<% ['Pro', 'Standard', 'Basic'].each do |type| %>
+					<%= f.radio_button :account_type, type %><%= type.humanize %>
+					<%= f.hidden_field :expires_at, :value => 1.month.from_now %>
+				<% end %>
+			</div><br/>
+			<%= f.submit "Update Account" %>
+		</td>
+	</tr>
+<% end %>
+

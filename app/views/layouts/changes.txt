@@ -1,0 +1,54 @@
+<div id="infoHolder">
+		<p style="color:#333333; Arial, Helvetica, sans-serif; font-size:14px;"><%= link_to "Home", root_path %> | <%= link_to "Pricing", pricing_path %> |
+		<% if user_signed_in? %>
+			<%= link_to "My networks", "#" %> |
+		<% elsif supplier_signed_in? %>
+			<%= link_to "My customer network", "#" %> |
+		<% end %>
+		
+		<% if user_signed_in? %>
+			<%= link_to "Invite", new_supplier_invitation_path %> |
+		<% elsif supplier_signed_in? %>
+			<%= link_to "My Account", account_path(current_supplier) %> |
+		<% end %>
+		
+		<% if user_signed_in? %>
+			<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+		<% elsif supplier_signed_in? %>
+			<%= link_to "Sign out", destroy_supplier_session_path, :method => :delete %> |
+		<% else %>
+			<%= link_to "Sign in", new_user_session_path %> | <%= link_to "Supplier sign in", new_supplier_session_path %> 
+		<% end %>
+			
+		<% if user_signed_in? %>
+			| <%= link_to "Settings", edit_user_path(current_user) %> 
+		<% elsif supplier_signed_in? %>
+			<%= link_to "Settings", edit_supplier_path(current_supplier) %>
+		<% end %>
+
+		<% if user_signed_in? %>
+			| <%= link_to "Profile", current_user %>
+		<% end %>
+
+		<% if supplier_signed_in? %>
+			| <%= link_to "New listing", new_listing_path %>
+		<% end %>
+		</p>		
+		<section class="container">
+		<% flash.each do |key, value| %>
+			<div class="titlebar">
+				<div class="flash <%= key %>"><%= value %></div>
+			</div>
+		<% end %>
+		<%= yield %>
+		</section>
+		<br/>
+		<p>&nbsp</p>
+		<div id="siteInfo">
+			<%= link_to "About", about_path %> | <%= link_to "Contact", "#" %> | &copy; 2012 JK SIZZIMS
+		</div>		
+	</div>
+
+<h3>Cancel my account</h3>
+	<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %>.</p>
+	<%= link_to "Back", :back %>

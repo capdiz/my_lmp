@@ -1,0 +1,106 @@
+<table cellspacing="1" cellpadding="1">
+	<% if supplier_signed_in? %>
+		<% if @supplier.profile_photo.nil? %>
+			<tr>
+				<td>
+					<h3>Hi <%= @supplier.first_name %>!</h3>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div id="image_holder">
+						<%= image_tag @supplier.supplier_image.url(:thumb) %><br/>
+						<span class="details"><%= link_to 'That ain\'t you?', new_profile_photo_path(current_supplier) %></span>
+					</div>
+				</td>
+			</tr>
+		<% else %>
+			<tr>
+				<td>
+					<h3>Hi <%= @supplier.first_name %>!</h3>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div id="image_holder">
+						<%= image_tag @supplier.profile_photo.profile_image.url(:small) %><br/>
+						<span class="details"><%= link_to 'Change photo?', edit_profile_photo_path(current_supplier) %></span>
+					</div>
+				</td>
+			</tr>
+		<% end %>
+	<% elsif user_signed_in? %>
+		<% unless @supplier.listings.empty? %>
+			<% if @supplier.profile_photo.nil? %>
+				<tr>
+					<td>
+						<h3><%= @supplier.first_name %>'s current listings </h3>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div id="image_holder">
+							<%= image_tag @supplier.supplier_image.url(:thumb) %><br/>
+							<div class="name">This ain't <%= @supplier.first_name %>!</div>
+						</div>
+					</td>
+				</tr>
+			<% else %>
+				<tr>
+					<td>
+						<h3><%= @supplier.first_name %>'s current listings</h3>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div id="image_holder">
+							<%= image_tag @supplier.profile_photo.profile_image.url(:small) %><br/>
+							<span class="profile"><%= @supplier.first_name %></span>
+						</div>
+					</td>
+				</tr>
+			<% end %>
+		<% end %>
+	<% end %>
+</table><br/>
+<div id="content">
+	<% if supplier_signed_in? %>
+		<% unless @supplier.listings.empty? %>
+			<table class="listings" summary ="Supplier listings">
+				<%= render @listings %>
+			</table>
+			<%= will_paginate @listings %>
+		<% else %>
+			<span class="details">You currently haven't listed any products yet. Click <%= link_to 'here', new_listing_path %> to start listing now.
+			</span>
+		<% end %>
+	<% elsif user_signed_in? %>
+		<% unless @supplier.listings.empty? %>
+			<table class="listings" summary ="Supplier listings">
+				<%= render @listings %>
+			</table>
+			<%= will_paginate @listings %>
+		<% else %>
+			<% if @supplier.first_name.nil? %>								
+				<table cellspacing="0" cellpadding="0" width="340">							
+					<tr>
+						<td>
+							<div id="image_holder">
+								<%= image_tag @supplier.supplier_image.url(:thumb) %><br/>
+								<div class="name">This ain't your supplier!</div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td align="center" colspan="3">
+							<br/>
+							<h3>Oops! Your supplier hasn't fulfilled your invite yet.</h3>
+						</td>
+					</tr>
+				</table><br/>
+			<% else %>
+				<span class="details">Your supplier hasn't listed any products yet.</span>
+			<% end %>
+		<% end %>
+	<% end %>
+</div><br/>

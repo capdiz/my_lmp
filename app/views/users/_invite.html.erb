@@ -1,0 +1,26 @@
+<h5 align="left">You currently have no supplier network. Invite your supplier now? </h5><br />
+<%= form_for(:invite, :url => invite_path) do |f| %>
+	<table border="0" cellspacing="2" cellpadding="2" width="200">
+		<tr>		
+			<td>
+				<div class="field">
+					<%= f.label :email, "Email: " %>
+				</div>
+			</td>
+			<td>
+				<div class="field">
+					<%= f.text_field :email, :size => 30 %>
+				</div>
+			</td>
+			<td align="left">
+				<div class="field">
+					<%= f.submit "Invite" %>
+				</div>
+			</td>
+		</tr>
+		<tr>
+		</tr>
+	</table>
+<% end %>
+
+

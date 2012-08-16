@@ -1,0 +1,9 @@
+<tr>
+	<td class="alert">
+		<span class="details"><%= alert.alert_title %></span><br/>
+		<span class="details">Listed: </span><span class="status"><%= time_ago_in_words(alert.created_at) %> ago.</span> <span class="details"><%= link_to 'view', supplier_path(alert.supplier_id) %></span></br>
+		
+	</td>
+</tr>
+		
+

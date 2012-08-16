@@ -1,0 +1,23 @@
+<tr>
+	<td class="listing">
+		<span class="subtitle"><%= listing.title %></span><br/>
+		<%= image_tag listing.listing_image.url(:medium) %>
+	</td>
+	<td class="listing">
+		<span class="details">Status:	   </span><span class="status"><%= listing.status %></span><br/>
+		<span class="details">Price:	   </span><span class="status"><%= listing.price %>$</span><br/>
+		<span class="details">Listed:	   </span><span class="status"><%= time_ago_in_words(listing.created_at) %> ago.</span><br/>
+		<span class="details">Description: <%= listing.description %></span><br/><br/>
+		<% if user_signed_in? %>
+			<span class="details"><%= link_to 'contact now', new_contact_path(listing), @listing %> | <%= link_to 'recommend', new_recommendation_path(listing), @listing %> | <%= link_to 'report', "#" %></span>
+		<% elsif supplier_signed_in? %>
+			<% if current_supplier?(listing.supplier) %>
+				<span class="details">
+					<%= link_to 'edit', edit_listing_path(listing), @listing %> | <%= link_to 'remove', listing, :method => :delete, 
+												    :confirm => "You sure you would like to delete listing", 
+										  		    :title => listing.title %>
+				</span>
+			<% end %>
+		<% end %>
+	</td>
+</tr>

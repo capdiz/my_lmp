@@ -1,0 +1,67 @@
+<tr>
+	<td>
+		<div id="image_holder">
+			<% if current_supplier.profile_photo.nil? %>
+				<%= image_tag current_supplier.supplier_image.url(:thumb) %><br/>
+				<span class="profile"><%= current_supplier.first_name + ' ' + current_supplier.last_name %></span>
+			<% else %>
+				<%= image_tag current_supplier.profile_photo.profile_image(:small) %><br/>
+				<span class="profile"><%= current_supplier.first_name + ' ' + current_supplier.last_name %></span>
+			<% end %>
+		</div><br/>
+	</td>
+</tr>
+<tr>
+	<td class="listing">
+		<span class="details">Account Type: </span>
+	</td>
+	<td class="listing">
+		<span class="account_field"><%= account.account_type %></span>
+	</td>
+
+</tr>
+<tr>
+	<td class="listing">
+		<span class="details">Expires at: </span>
+	</td>
+	<td class="listing">
+		<span class="account_field"><%= account.expires_at.to_s %></span>
+	</td>
+</tr>
+<tr>
+	<td class="listing">
+		<span class="details">Listing limit: </span>
+	</td>
+	<td class="listing">
+		<div class="account_field">
+			<% if account.account_type == "Pro" %>
+				<% if account.listing_limit < 30 %>
+					<span class="details"><%= account.listing_limit %> (valid [ <%= @listing_remain %> remaining ])</span> 
+				<% elsif account.listing_limit >= 30 %>
+					<span class="details"><%= account.listing_limit %> (invalid [ <%= @listing_remain %> remaining ])</span>
+				<% end %>
+			<% elsif account.account_type == "Standard" %>
+				<% if account.listing_limit < 20 %>
+					<span class="details"><%= account.listing_limit %> (valid [ <%= @listing_remain %> remaining ])</span>
+				<% elsif account.listing_limit >= 20 %>
+					<span class="details"><%= account.listing_limit %> (invalid [ <%= @listing_remain %> remaining ])</span>
+				<% end %>
+			<% elsif account.account_type == "Basic" %>
+				<% if account.listing_limit < 10 %>
+					<span class="details"><%= account.listing_limit %> (valid [ <%= @listing_remain %> remaining ])</span>
+				<% elsif account.listing_limit >= 10 %>
+					<span class="details"><%= account.listing_limit %> (invalid [ <%= @listing_remain %> remaining ])</span>
+				<% end %>
+			<% end %>
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="listing">
+		<span class="details">All Listings: </span>
+	</td>
+	<td class="listing">
+		<span class="account_field"><%= current_supplier.listings.count %></span>
+	</td>
+</tr>
+

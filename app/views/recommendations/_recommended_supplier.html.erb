@@ -1,0 +1,27 @@
+<table class="suppliers" summary="Recommended suppliers">
+	<h2>Shared network</h2>
+	<% @recommended_suppliers.each_slice(3) do |recommended_suppliers| %>
+		<tr>
+			<% recommended_suppliers.zip(["left", "right"]).each do |recommended_supplier, side| %>
+				<td>
+					<ul>
+						<% if recommended_supplier.profile_photo.nil? %>
+							<div id="image_holder">
+								<%= image_tag recommended_supplier.supplier_image.url(:thumb) %><br/>
+								<span class="profile"><%= recommended_supplier.first_name %> | </span><span class="details"><%= link_to 'View', supplier_path(recommended_supplier) %></span><br/>						
+								<span class="details">Added: </span><span class="name"><%= time_ago_in_words(recommended_supplier.created_at) %> ago.</span>
+							</div>
+						<% else %>
+							<div id="image_holder">
+								<%= image_tag recommended_supplier.profile_photo.profile_image(:thumb) %><br/>
+								<span class="profile"><%= recommended_supplier.first_name %> | </span><span class="details"><%= link_to 'View', supplier_path(recommended_supplier) %></span><br/>
+								<span class="details">Added: </span><span class="name"><%= time_ago_in_words(recommended_supplier.created_at) %> ago.</span>
+							</div>
+						<% end %>
+					</ul>
+				</td>
+			<% end %>
+		</tr>
+	<% end %>
+</table>
+<%= will_paginate @recommended_suppliers %>

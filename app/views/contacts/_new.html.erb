@@ -1,0 +1,40 @@
+<h2>Contact <%= @supplier.first_name %></h2><br/>
+<%= form_for(@contact) do |f| %>
+	<table class="details" border="0" cellspacing="2" cellpadding="1" width="260">
+		<%= render 'shared/contact_error_messages', :object => f.object %>
+		<tr>
+			<td>
+				<%= f.label :email, "To: " %>			
+			</td>
+			<td>
+				<%= f.text_field :email, :value => @supplier.email, :size => "25" %>
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				<%= f.label :subject, "Subject: " %>
+			</td>
+			<td>
+				<%= f.text_field :subject, :value => @listing.title, :size => "25" %>
+			</td>
+		</tr>
+	
+		<tr>
+			<td>
+				<%= f.label :message, "Message: " %>
+			</td>
+			<td>
+				<%= f.text_area :message, :rows => 5, :cols => 40, :height => 10 %>
+			</td>
+		</tr>
+
+		<tr>
+			<td align="center" colspan="3">
+				<%= f.submit "Contact" %>
+			</td>
+		</tr>
+	</table>
+<% end %>
+
+

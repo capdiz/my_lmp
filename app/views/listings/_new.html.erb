@@ -1,0 +1,51 @@
+<h2>Add a new listing.</h2></br>
+<%= form_for(@listing, :html => { :multipart => true }) do |f| %>
+	<table class="details" border="0" cellspacing="0" cellpadding="0" width="260">
+		<tr>
+			<td>				
+				<%= f.label :title, "Title: " %>(add a short title for your listing)<br/>
+				<%= f.text_field :title, :size => "25" %>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<%= f.label :description, "Description: " %>(include things like model, make, year etc)<br/>
+				<%= f.text_area :description, :rows => 5, :cols => 40, :height => 10 %>
+			</td>			
+			
+		</tr>
+		<tr>
+			<td>
+				<%= f.label :price, "Price: " %>(currently all prices in dollars $$$!)<br/>
+				<%= f.text_field :price, :size => "25" %>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<%= f.label :categories, "Listing category: " %> (add categories that apply to your listing)<br/>
+				<%= select_tag("category_ids[]", options_for_select(@categories.collect { |cat| [cat.category_name, cat.id]},
+										    @listing.listing_categories.collect{|cat1| cat1.id}), 
+										    {:multiple => true, :id => "categories"}) %>
+									    
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<%= f.label "Add image (You can only add one photograph per listing)" %><br/>
+				<%= f.file_field :listing_image %>
+			</td>
+		</tr>
+		<tr>
+			<td align="center" colspan="1">
+				<br/>
+				<%= f.submit "List" %>
+			</td>
+		</tr>
+	</table>
+	<%= render 'shared/listing_error_messages', :object => f.object %>
+<% end %>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#categories").multiselect();
+		});
+</script>

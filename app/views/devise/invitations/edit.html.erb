@@ -1,0 +1,73 @@
+<h3>supplier sign up</h3><br/>
+
+<div class="content">
+	<%= form_for @supplier, :url => invitation_path(@supplier), :html => { :method => :put } do |f| %>
+		<table class="details" border="0" cellspacing="2" cellpadding="1">
+			<%= f.hidden_field :invitation_token %>
+			<tr>
+				<td>
+					<%= f.label :first_name, "First name:" %>
+				</td>
+				<td>
+					<%= f.text_field :first_name, :size => "25" %>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<%= f.label :last_name, "Last name:" %>
+				</td>
+				<td>
+					<%= f.text_field :last_name, :size => "25" %>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<%= f.label :email, "Email:" %>
+				</td>
+				<td>
+					<%= f.text_field :email, :size => "25" %>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<%= f.label :password, "Password:" %>
+				</td>
+				<td>
+					<%= f.password_field :password, :size => "25" %>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<%= f.label :password_confirmation, "Confirm password:" %>
+				</td>
+				<td>
+					<%= f.password_field :password_confirmation, :size => "25" %>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<%= f.label :country, "Country:" %>
+				</td>
+				<td>
+					<div class="input">
+						<%= country_select("supplier", 'country', {}, {}, { :class => "country_select" })%>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<%= f.label :city, "City: " %>
+				</td>
+				<td>
+					<%= f.text_field :city, :size => 25 %>
+				</td>
+			</tr>
+			<tr>
+				<td align="center" colspan="6">
+					<%= f.submit "Sign up" %>
+				</td>			
+		</table>
+	<% end %>
+	<%= render 'shared/supplier_error_messages' %>
+</div>
+
