@@ -5,10 +5,8 @@ require File.expand_path('../application', __FILE__)
 MyLmp::Application.initialize!
 
   ActionMailer::Base.smtp_settings = { 
-	:address =>	"smtp.gmail.com",
+	:address =>	"smtp.mandrillapp.com",
 	:port =>	587,
-	:user_name =>	'kansspike05@gmail.com',
-	:password =>	'kusasirwamaurice',
-	:authentication => :plain,
-	:enable_starttls_auto => true
+	:user_name =>	ENV["capdiz@yahoo.com"],
+	:password =>	ENV["70df126e-e283-4a10-939c-75b3130376ef"]
   }	
