@@ -1,3 +1,4 @@
+# encoding: utf-8
 # == Schema Information
 # Schema version: 20120804085731
 #
@@ -33,7 +34,7 @@
 #  supplier_image_content_type :string(255)     
 #  supplier_image_file_size    :integer         
 #  supplier_image_updated_at   :datetime        
-#
+
 
 class Supplier < ActiveRecord::Base
 	devise :database_authenticatable, :registerable,
