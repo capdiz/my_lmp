@@ -4,8 +4,12 @@
 			<td class="user_alert">
 				<div class="product_alert">
 					<span class="product"><%= user_alert.title %></span><br/>
-					<%= image_tag user_alert.user.profile_photo.profile_image.url(:thumb) %><br/>
-					<span class="name"><%= user_alert.user.first_name %></span>
+					<% if user_alert.user.profile_photo.nil? %>
+						<%= image_tag user_alert.user.user_image.url(:thumb) %>
+					<% else %>
+						<%= image_tag user_alert.user.profile_photo.profile_image.url(:thumb) %><br/>
+						<span class="name"><%= user_alert.user.first_name %></span>
+					<% end %>
 				</div>
 			</td>	
 			<td class="user_alert"><br/><br/>
