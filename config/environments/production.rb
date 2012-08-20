@@ -57,4 +57,6 @@ MyLmp::Application.configure do
   config.action_mailer.raise_delivery_errors = false
 
   config.action_mailer.default :charset => "utf-8"
+
+  config.action_mailer.default :encoding => "utf-8"
 end
