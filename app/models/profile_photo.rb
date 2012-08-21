@@ -30,17 +30,22 @@ class ProfilePhoto < ActiveRecord::Base
 	validates_attachment_size :profile_image, :less_than => 3.megabytes
 
 	before_profile_image_post_process do |image|
-		if image.source_changed?
-			processing = true
+		if image.source_changed? && image.profile_image_changed?
+			image.processing = true
 			false
 		end
 	end
 
 	after_save do |image|
-		if image.source_changed?
-			Delayed::Job.enqueue ImageJob.new(image.id)
+		if image.processing
+			processImageJob(image)
 		end
 	end
+
+	def processImageJob
+		image.regenerate_styles!
+	end
+	handle_asynchronously :processImageJob
 
 	def regenerate_styles!
 		self.profile_image.reprocess!
@@ -48,18 +53,11 @@ class ProfilePhoto < ActiveRecord::Base
 		self.save(:validate => false)
 	end
 
-	def source_changed?
+	def profile_image_changed?
 		self.profile_image_file_size_changed? ||
 		self.profile_image_file_name_changed? ||
 		self.profile_image_content_type_changed? ||
 		self.profile_image_updated_at_changed?
-	end	
-
-	class ImageJob < Struct.new(:id)
-		def perform
-			ProfilePhoto.find(self.id).regenerate_styles!
-		end
 	end
-
 
 end
