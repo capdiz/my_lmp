@@ -44,6 +44,11 @@ GEM
     country_select (0.0.2)
     currencies (0.4.0)
     daemons (1.1.9)
+    delayed_job (3.0.3)
+      activesupport (~> 3.0)
+    delayed_job_active_record (0.3.2)
+      activerecord (> 2.1.0)
+      delayed_job (~> 3.0.0)
     devise (1.5.3)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.0.3)
@@ -134,6 +139,8 @@ DEPENDENCIES
   aws-s3
   countries (~> 0.8.2)
   country_select (~> 0.0.2)
+  delayed_job (~> 3.0.3)
+  delayed_job_active_record (~> 0.3.2)
   devise (~> 1.5.3)
   devise_invitable (~> 0.6.0)
   factory_girl_rails
