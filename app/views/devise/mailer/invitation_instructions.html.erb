@@ -1,6 +1,6 @@
 <p>Hello <%= @resource.email %>!</p>
 
-<p>Someone has invited you to <%= root_url %>, you can accept it through the link below.</p>
+<p><%= @resource.invited_by.first_name %> has invited you to <%= root_url %> an online marketplace where users get to invite their favorite suppliers online, you can accept it through the link below.</p>
 
 <p><%= link_to 'Accept invitation', accept_invitation_url(@resource, :invitation_token => @resource.invitation_token) %></p>
 
