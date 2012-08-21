@@ -1,4 +1,3 @@
-<# encoding: utf-8>
 <!DOCTYPE html>
 <html>
   <head>
@@ -10,6 +9,7 @@
     	You have just recieved an invite to <%= root_url %>  an online marketplace where users get to invite their favorite local suppliers online. You can accept this invitation through the link below.
     </p>
     <p>
+    <# encoding: utf-8>
     	<%= link_to 'Accept invitation', accept_invitation_url(@resource, :invitation_token => @resource.invitation_token) %>
    </p>
    <p>
