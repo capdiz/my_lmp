@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120821122430) do
+ActiveRecord::Schema.define(:version => 20120821151407) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "supplier_id"
@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(:version => 20120821122430) do
     t.string   "profile_image_content_type"
     t.integer  "profile_image_file_size"
     t.datetime "profile_image_updated_at"
+    t.boolean  "processing"
   end
 
   add_index "profile_photos", ["supplier_id"], :name => "index_profile_photos_on_supplier_id"
