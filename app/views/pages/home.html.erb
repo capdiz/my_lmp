@@ -67,7 +67,7 @@
 
 <% elsif supplier_signed_in? %>
 	<table cellspcing="1" cellpadding="1">
-		<% if current_supplier.supplier_image.nil? %>
+		<% if current_supplier.profile_photo.nil? %>
 			<tr>
 				<td>
 					<h3>Hi <%= current_supplier.first_name %>!</h3><br/>
