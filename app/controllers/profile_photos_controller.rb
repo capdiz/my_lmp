@@ -10,15 +10,7 @@ class ProfilePhotosController < ApplicationController
 	end
 
 	def create
-		if user_signed_in?
-			@profile_photo = current_user.build_profile_photo(params[:profile_photo])
-			if @profile_photo.save
-				flash[:success] = "Your profile photo was successfully added"
-				redirect_to user_path(current_user)
-			else
-				respond_with @profile_photo
-			end
-		elsif supplier_signed_in?
+		if supplier_signed_in?
 			@profile_photo = current_supplier.build_profile_photo(params[:profile_photo])
 			if @profile_photo.save
 				flash[:success] = "Your profile photo was successfully added"
