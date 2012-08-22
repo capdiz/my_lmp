@@ -52,7 +52,6 @@ class ProfilePhotosController < ApplicationController
 			end
 		end
 	end
-	handle_asynchronously :update
 
 
 	private

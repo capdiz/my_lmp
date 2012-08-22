@@ -29,6 +29,4 @@ class ProfilePhoto < ActiveRecord::Base
 
 	validates_attachment_size :profile_image, :less_than => 3.megabytes
    
-	process_in_background :profile_image
-
 end

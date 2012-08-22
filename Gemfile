@@ -44,8 +44,6 @@ group :production do
 	gem 'country_select', "~> 0.0.2"
 	gem 'jquery-rails', "~> 1.0.12"
 	gem 'paperclip', "~> 2.4.5"
-	gem 'delayed_job', "~> 3.0.3"
-	gem 'delayed_paperclip', "~> 2.4.5.1"
 end
 
 # Bundle edge Rails instead:
