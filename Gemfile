@@ -46,7 +46,6 @@ group :production do
 	gem 'paperclip', "~> 2.4.5"
 	gem 'delayed_job', "~> 3.0.3"
 	gem 'delayed_paperclip', "~> 2.4.5.1"
-	gem 'delayed_job_active_record', "~> 0.3.2"
 end
 
 # Bundle edge Rails instead:
