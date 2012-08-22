@@ -1,0 +1,40 @@
+<h1>Contact Us</h2>
+<div id="content">
+	<h1>Seen far too many BUGS.. Just contact us below. OR tell me what you think of the site</h1>
+	<%= form_for(@info) do |f| %>
+		<table class="details" cellspacing="0" cellpadding="0">
+			<tr>
+				<td>
+					<%= f.label :name %></br>
+					<label>if you don't mind.. thanks</label>
+				</td>
+				<td>
+					<%= f.text_field :name, :size => "25" %>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<%= f.label :subject %>
+				</td>
+				<td>
+					<%= f.text_field :subject, :size => "25" %>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<%= f.label :message %>
+				</td>
+				<td>
+					<%= f.text_area :subject, :rows => 4, :cols => 35, :height => 10 %>
+				</td>
+			</tr>
+			<tr>
+				<td align="center" colspan="1">
+					<%= f.submit "Shoot" %>
+				</td>
+			</tr>
+		</table>
+		<%= render 'shared/info_error_messages', :object => f.object %>
+	<% end %>
+</div>
+

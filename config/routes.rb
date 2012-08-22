@@ -49,11 +49,11 @@ MyLmp::Application.routes.draw do
   # match '/signin', :to =>  'sessions#new'
   # match '/signout', :to => 'sessions#destroy'
   resources  :users
-  resources :user_contacts, :only => [:new, :create, :edit, :update, :destroy]
+  resources  :user_contacts, :only => [:new, :create, :edit, :update, :destroy]
   resources  :profile_photos, :only => [:new, :create, :edit, :update]  
   resources  :suppliers
   resources  :listings
-  resources  :accounts		  
+  resources  :accounts
   resources  :contacts, :only => [:new, :create, :destroy]
   resources  :recommendations, :only => [:new, :create, :accept_recommendation] do
 	  match "accept_recommendation", :to => 'recommendations#accept_recommendation',

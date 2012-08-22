@@ -44,6 +44,12 @@ class Notifier < ActionMailer::Base
 	       :subject => "#{supplier.first_name} you just recieved a report on your local market-place")
   end
 
+  def send_info_message(name, subject, message)
+	  mail(:to => "info@mylmp.us",
+	       :subject => subject,
+	       :message => "#{name} just sent you the following message: "\b message)
+  end
+
   # Method will check if an account has expired and 
   # send an email to supplier about account expired notification
   def account_expired_notifier
