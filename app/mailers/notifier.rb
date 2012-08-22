@@ -1,7 +1,7 @@
 class Notifier < ActionMailer::Base
 
-  default :from => "no-reply@example.com",
-  	  :return_path => "kansspike05@gmail.com"
+  default :from => "no-reply@my_lmp.us",
+  	  :return_path => "info@mylmp.us"
 
   # The new listing notifier should be sent to 
   # both a suppliers' inviter and a shared network.
@@ -9,7 +9,7 @@ class Notifier < ActionMailer::Base
 	  @user = user
 	  @supplier = supplier
 	  @listing = listing
-	  @login_url = "http://localhost:3000/signin"
+	  @login_url = "http://www.mylmp.herokuapp.com/signin"
 	  mail(:to => user.email,
 	       :subject => "#{supplier.first_name} just listed a new #{listing}")
   end
