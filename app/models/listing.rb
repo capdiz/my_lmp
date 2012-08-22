@@ -38,7 +38,10 @@ class Listing < ActiveRecord::Base
 	
 	validates_numericality_of :price
 
-	has_attached_file :listing_image, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+	has_attached_file :listing_image, :styles => { :medium => "300x300>", :thumb => "100x100>"}, 
+									      :storage => :s3,
+				    					      :s3_credentials => "#{RAILS_ROOT}/config/amazon_s3.yml" 
+	
 
 	LIMIT_OFFSET = 0
 	MAX_LISTINGS = 10
