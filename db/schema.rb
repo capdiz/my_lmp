@@ -100,7 +100,7 @@ ActiveRecord::Schema.define(:version => 20120821151407) do
     t.string   "profile_image_content_type"
     t.integer  "profile_image_file_size"
     t.datetime "profile_image_updated_at"
-    t.boolean  "processing"
+    t.boolean  "profile_image_processing"
   end
 
   add_index "profile_photos", ["supplier_id"], :name => "index_profile_photos_on_supplier_id"

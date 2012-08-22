@@ -10,5 +10,3 @@
 	for cats in categories do
 		def_cat = Category.create!(:category_name => cats)
 	end
-
-

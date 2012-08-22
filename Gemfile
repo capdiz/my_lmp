@@ -13,7 +13,7 @@ gem "annotate", "~> 2.5.0", :group => :development
 gem "countries", "~> 0.8.2", :group => :development
 gem "country_select", "~> 0.0.2", :group => :development
 gem "jquery-rails", "~> 1.0.12", :group => :development
-gem "paperclip", "~> 2.4.3", :group => :development
+gem "paperclip", "~> 2.4.5", :group => :development
 
 group :development do
 	gem 'rspec-rails'
@@ -23,7 +23,7 @@ group :development do
 	gem 'countries', "~> 0.8.2"
 	gem 'country_select', "~> 0.0.2"
 	gem 'jquery-rails', "~> 1.0.12"
-	gem 'paperclip', "~> 2.4.3"
+	gem 'paperclip', "~> 2.4.5"
 	gem 'delayed_job', "~> 3.0.3"
 	gem 'delayed_job_active_record', "~> 0.3.2"
 end
@@ -43,9 +43,9 @@ group :production do
 	gem 'countries', "~> 0.8.2"
 	gem 'country_select', "~> 0.0.2"
 	gem 'jquery-rails', "~> 1.0.12"
-	gem 'paperclip', "~> 2.4.3"
-	gem 'delayed_job', "~> 3.0.3" 
-	gem 'delayed_job_active_record', "~> 0.3.2"
+	gem 'paperclip', "~> 2.4.5"
+	gem 'delayed_job', "~> 3.0.3"
+	gem 'delayed_paperclip', "~> 2.4.5.1"
 end
 
 # Bundle edge Rails instead:
