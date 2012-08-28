@@ -1,26 +1,41 @@
 <table class="suppliers" summary="User supplier">
 	<div class="details"><h2>Supplier network</h2></div>
-	<%= @suppliers.each_slice(3) do |suppliers| %>
-		<tr>
-			<% suppliers.zip(["left", "right"]).each do |supplier, side| %>
-				<td>
-					<ul>
-						<%= form_for(@recommender, :url => user_alert_recommenders_path, :remote => true ) do |f| %>
-							<%= f.hidden_field :recommended_by_user_id, :value => current_user.id %>
-							<%= f.hidden_field :recommended_by_name, :value => current_user.first_name %>
-							<% if !supplier.profile_photo.nil? %>
-								<div id="image_holder">
-									<%= image_tag supplier.profile_photo.profile_image.url(:thumb) %>
-									<%= f.hidden_field :recommended_to_supplier_id, :value => supplier.id  %>
-									<span class="name"><%= supplier.first_name %> | <%= supplier.city %></span><br/>
-									<span class="product"><%= f.submit 'recommend'  %></span>
-								</div>
-							<% end %>										
-						<% end %>
-					</ul>
-				</td>
-			<% end %>
-		</tr>	
+	<% unless @suppliers.empty? %>
+		<%= @suppliers.each_slice(3) do |suppliers| %>
+			<tr>
+				<% suppliers.zip(["left", "right"]).each do |supplier, side| %>
+					<td>
+						<ul>
+							<%= form_for(@recommender, :url => user_alert_recommenders_path, :remote => true ) do |f| %>
+								<%= f.hidden_field :recommended_by_user_id, :value => current_user.id %>
+								<%= f.hidden_field :recommended_by_name, :value => current_user.first_name %>
+								<% if !supplier.first_name.nil? %>
+									<% if !supplier.profile_photo.nil? %>
+										<div id="image_holder">
+											<%= image_tag supplier.profile_photo.profile_image.url(:thumb) %>
+											<%= f.hidden_field :recommended_to_supplier_id, :value => supplier.id  %>
+											<span class="name"><%= supplier.first_name %> | <%= supplier.city %></span><br/>
+											<span class="product"><%= f.submit 'recommend'  %></span>
+										</div>
+									<% else %>
+										<div id="image_holder">
+											<%= image_tag supplier.supplier_image.url(:thumb) %>
+											<%= f.hidden_field :recommended_to_supplier_id, :value => supplier.id  %>
+											<span class="name"><%= supplier.first_name %> | <%= supplier.city %></span><br/>
+											<span class="product"><%= f.submit 'recommend'  %></span>
+										</div>								
+									<% end %>
+								<% end %>
+							<% end %>
+						</ul>
+					</td>
+				<% end %>
+			</tr>	
+		<% end %>
+	<% else %>
+		<div id="network">
+			<span class="details">You currently have no supplier network to recommend this user alert to. Post an alert and add any of your contacts as a supplier.</span><br/><br/>
+		</div>
 	<% end %>
 </table>
 

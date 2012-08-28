@@ -142,7 +142,7 @@ label{
 	position: relative;
 	background: #F2F2F2;
 	right: -705px;
-	top: -428px;
+	top: -487px;
 	width: 29%;
 }
 	
@@ -219,11 +219,19 @@ label{
 }
 
 #productalert{
-	position: absolute;
 	left:720px;
 	top:-1px;
 	color: #cccccc;
-	float: right;
+	float: left;
+}
+
+#newAlert {
+	float: left;
+	border-radius: 6px;
+	border: #ccc solid 1px;
+	background: #FFFFFF;
+	left: 172px;
+	top: 162px;
 }
 
 #siteInfo{
@@ -591,6 +599,10 @@ label{
 
 .input select {
 	width: 60%;
+}
+
+.sign_up_input select {
+	width: 45%;
 }
 
 h1.user{

@@ -1,6 +1,6 @@
 <h1> Sign up here! </h1><br/>
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-	<table class="details" border="0" cellspacing="2" cellpadding="2">
+	<table class="details" border="0" cellspacing="2" cellpadding="2" width="450">
 		<tr>
 			<td>
 				<%= f.label :first_name, "First name:" %>
@@ -39,6 +39,24 @@
 			</td>
 			<td>
 				<%= f.password_field :password_confirmation, :size => "20" %>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<%= f.label :country, "Country: " %>
+			</td>
+			<td>
+				<div class="sign_up_input">
+					<%= country_select("user", 'country', {}, {}, { :class => "country_select" }) %>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<%= f.label :city, "City: " %>
+			</td>
+			<td>
+				<%= f.text_field :city, :size => "20" %>
 			</td>
 		</tr>
 		<tr>

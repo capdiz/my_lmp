@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120821122430) do
+ActiveRecord::Schema.define(:version => 20120828065818) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "supplier_id"
@@ -193,6 +193,7 @@ ActiveRecord::Schema.define(:version => 20120821122430) do
     t.string   "prefered_category"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "report_count"
   end
 
   add_index "user_alerts", ["user_id"], :name => "index_user_alerts_on_user_id"

@@ -5,10 +5,11 @@
 				<div class="product_alert">
 					<span class="product"><%= user_alert.title %></span><br/>
 					<% if user_alert.user.profile_photo.nil? %>
-						<%= image_tag user_alert.user.user_image.url(:thumb) %>
+						<%= image_tag user_alert.user.user_image.url(:thumb) %><br/>
+						<span class="details"><%= link_to 'Please add a better photo?', new_profile_photo_path(current_user) %></span>
 					<% else %>
 						<%= image_tag user_alert.user.profile_photo.profile_image.url(:thumb) %><br/>
-						<span class="name"><%= user_alert.user.first_name %></span>
+						<span class="name"><%= link_to 'Change photo', edit_profile_photo_path(current_user) %></span>
 					<% end %>
 				</div>
 			</td>	
@@ -26,17 +27,21 @@
 	<% if user_alert.expires_at > Time.now %>
 		<tr>
 			<td class="product_alert">
-				<span class="product"><%= user_alert.title %></span><br/>
-				<%= image_tag user_alert.user.profile_photo.profile_image.url(:thumb) %><br/>
 				<div class="product_alert">
-					<span class="name"><%= user_alert.user.first_name %></span>
+					<span class="product"><%= user_alert.title %></span><br/>
+					<% if user_alert.user.profile_photo.nil? %>
+						<%= image_tag user_alert.user.user_image.url(:thumb) %>
+					<% else %>
+						<%= image_tag user_alert.user.profile_photo.profile_image.url(:thumb) %><br/>
+						<span class="name"><%= user_alert.user.first_name %></span>
+					<% end %>
 				</div>
 			</td>	
 			<td class="product_alert"><br/><br/>
 				<span class="name">Posted: <%= time_ago_in_words(user_alert.created_at) %> ago.</span>
 				<span class="name">By: <%= user_alert.user.first_name %></span>
 				<span class="name">Target location: <%= user_alert.target_location %></span>
-				<span class="product"><%= link_to 'recommend', new_user_alert_recommender_path(user_alert), { :method => :get, :remote => true } %> | <%= link_to 'contact', new_user_contact_path(current_user, :contact_id => user_alert.user_id, :contact_alert_id => user_alert.id, :contact_about_alert => user_alert.title), { :method => :get, :remote => true } %></span>	   
+				<span class="product"><%= link_to 'recommend', new_user_alert_recommender_path(user_alert), { :method => :get, :remote => true } %> | <%= link_to 'contact', new_user_contact_path(current_user, :contact_id => user_alert.user_id, :contact_alert_id => user_alert.id, :contact_about_alert => user_alert.title), { :method => :get, :remote => true } %> | <%= link_to 'report', "#" %></span>	   
 			</td>
 		</tr>
 	<% end %>

@@ -1,5 +1,5 @@
 class UserAlertsController < ApplicationController
-	before_filter :authenticate, :only => [:index, :create, :destroy]
+	before_filter :authenticate, :only => [:index, :destroy]
 	before_filter :correct_user, :only => [:edit, :update, :destroy]
 
 	def index
@@ -12,7 +12,10 @@ class UserAlertsController < ApplicationController
 	end
 
 	def create
-		if current_user.city.nil?
+		if !user_signed_in?
+			flash[:notice] = "You need to be signed in to create an alert or sign up now. It's free"
+			redirect_to new_user_session_path
+		elsif current_user.city.nil?
 			flash[:notice] = "You need to add your location details to post an alert"
 			redirect_to edit_user_path(current_user)
 		else

@@ -74,6 +74,11 @@ class User < ActiveRecord::Base
      			 :confirmation => true,
   			 :length => { :within => 6..40 }
 
+  validates :country, :presence => true
+
+  validates :city, :presence => true,
+	  	   :length => { :maximum => 50 }
+
   # before_save :encrypt_password
   def password_match?
     self.errors[:password] << 'password not match' if password != password_confirmation

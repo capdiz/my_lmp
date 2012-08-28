@@ -27,6 +27,6 @@ class ProfilePhoto < ActiveRecord::Base
 					  :s3_credentials => "#{RAILS_ROOT}/config/amazon_s3.yml"
 					  
 
-	validates_attachment_size :profile_image, :less_than => 3.megabytes
+	validates_attachment_size :profile_image, :less_than => 1.megabytes
    
 end
