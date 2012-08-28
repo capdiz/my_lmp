@@ -10,10 +10,6 @@
 				<%= render @alerts %>
 			</table><br/>
 		</div>
-	<% else %>
-		<div id="content">
-			<div class="details">Be the first to post an alert in your location.</div>
-		</div>
 	<% end %>
 	<% unless @user_contacts.empty? %>
 		<div id="alert">
@@ -45,6 +41,8 @@
 				</tr>
 				<%= render @user_alerts %>
 			</table><br/>
+		<% else %>
+			<div class="details">Be the first to post an alert in your location.</div>
 		<% end %><br/>
 	</div>
 <% else %>
