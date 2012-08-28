@@ -9,7 +9,7 @@
 						<span class="details"><%= link_to 'Please add a better photo?', new_profile_photo_path(current_user) %></span>
 					<% else %>
 						<%= image_tag user_alert.user.profile_photo.profile_image.url(:thumb) %><br/>
-						<span class="name"><%= link_to 'Change photo', edit_profile_photo_path(current_user) %></span>
+						<span class="details"><%= link_to 'Change photo', edit_profile_photo_path(current_user) %></span>
 					<% end %>
 				</div>
 			</td>	
