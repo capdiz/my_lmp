@@ -1,44 +1,52 @@
 class ListingsController < ApplicationController
-	before_filter :authenticate_supplier, :only => [:destroy, :new]
-	before_filter :correct_supplier, :only => [:edit, :update, :destroy]
+	before_filter :authenticate, :only => [:destroy, :new]
+	before_filter :correct_user, :only => [:edit, :update, :destroy]
 
 	respond_to :html, :js
 
 	def new
-		@listing = Listing.new
-		@categories = Category.find(:all)
-		@title = "Supplier listings"
+		if user_signed_in?
+			@user_contact = UserContact.find_by_user_id(current_user.id)
+			if @user_contact.nil?
+				flash[:notice] = "You need to at least have responded to or posted an alert in order to start listing"
+ 				redirect_to(:back)
+			else	       
+				@listing = Listing.new
+				@categories = Category.find(:all)
+				@title = "New listing"
+			end
+		end
 	end
 	
 	def create
-		@account = Account.find_by_supplier_id(current_supplier.id)
+		@account = Account.find_by_user_id(current_user.id)
 		if !@account.nil?
 			if @account.account_type == "Pro" && @account.listing_limit < 30 || @account.expires_at < Time.now then
-				@listing = current_supplier.listings.build(params[:listing])
+				@listing = current_user.listings.build(params[:listing])
 				@listing.categories = Category.find(params[:category_ids]) unless params[:category_ids].nil?
        				if @listing.save 
        					flash[:success] = "Listing successfully created"
-       					redirect_to supplier_path(current_supplier)
+       					redirect_to user_path(current_user)
        				else
        					@categories = Category.all
        					respond_with @listing
        				end
 			elsif @account.account_type == "Standard" && @ccount.listing_limit < 20 || @account.expires_at < Time.now then
-				@listing = current_supplier.listings.build(params[:listing])
+				@listing = current_user.listings.build(params[:listing])
        				@listing.categories = Category.find(params[:category_ids]) unless params[:category_ids].nil?
        				if @listing.save 
        					flash[:success] = "Listing successfully created"
-       					redirect_to supplier_path(current_supplier)
+       					redirect_to user_path(current_user)
        				else
        					@categories = Category.all
        					respond_with @listing
        				end
 			elsif @account.account_type == "Basic" && @account.listing_limit < 10 || @account.expires_at < Time.now then
-				@listing = current_supplier.listings.build(params[:listing])
+				@listing = current_user.listings.build(params[:listing])
        				@listing.categories = Category.find(params[:category_ids]) unless params[:category_ids].nil?
        				if @listing.save 
 					flash[:success] = "Listing successfully created"
-       					redirect_to supplier_path(current_supplier)
+       					redirect_to user_path(current_user)
        				else
        					@categories = Category.all
        					respond_with @listing
@@ -46,24 +54,24 @@ class ListingsController < ApplicationController
 			else
 				if @account.account_type == "Pro" && @account.listing_limit >= 30 then
 					flash[:notice] = "Limit over: You can only list up to 30 listings per month"
-					redirect_to supplier_path(current_supplier)
+					redirect_to user_path(current_user)
 				elsif @account.account_type == "Standard" && @account.listing_limit >= 20 then
 					flash[:notice] = "Limit over: You can only list up to 20 listings per month"
-					redirect_to supplier_path(current_supplier)
+					redirect_to user_path(current_user)
 				elsif @account.account_type == "Basic" && @account.listing_limit >= 10 then
 					flash[:notice] = "Limit over: You can only list up to 10 listings per month"
-					redirect_to supplier_path(current_supplier)
+					redirect_to user_path(current_user)
 				elsif @account.expires_at > Time.now
 					flash[:notice] = "Account expired: Please renew your account @ My Account tab"
-					redirect_to supplier_path(current_supplier)
+					redirect_to user_path(current_user)
 				end
 			end
 		else
-			@listing = current_supplier.listings.build(params[:listing])
+			@listing = current_user.listings.build(params[:listing])
 			@listing.categories = Category.find(params[:category_ids]) unless params[:category_ids].nil?
 			if @listing.save 
 				flash[:success] = "Listing successfully created"
-				redirect_to supplier_path(current_supplier)
+				redirect_to user_path(current_user)
 			else
 				@categories = Category.all
 				respond_with @listing
@@ -78,7 +86,7 @@ class ListingsController < ApplicationController
 	def update
 		if @listing.update_attributes(params[:listing])
 			flash[:notice] = "Listing successfully updated"
-			redirect_to supplier_path(current_supplier)
+			redirect_to user_path(current_user)
 		else
 			@title = "Edit listing"
 			render edit
@@ -93,9 +101,9 @@ class ListingsController < ApplicationController
 
 	private
 
-	def correct_supplier 
+	def correct_user 
 		@listing = Listing.find(params[:id])
-		redirect_to(root_path) unless current_supplier?(@listing.supplier)
+		redirect_to(root_path) unless current_user?(@listing.user)
 	end
 
 	#def alert_inviter

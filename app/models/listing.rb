@@ -20,7 +20,7 @@
 class Listing < ActiveRecord::Base
 	attr_accessible :title, :description, :price, :status, :listing_image, :limit
 	
-	belongs_to :supplier
+	belongs_to :user
 
 	has_many :categories, :through => :listing_categories, :foreign_key => "category_id"
 
@@ -28,7 +28,7 @@ class Listing < ActiveRecord::Base
 
 	has_many :recommendations
 
-	validates :supplier_id, :presence => true
+	validates :user_id, :presence => true
 
 	validates :title, :presence => true, 
 			  :length => { :maximum => 50 }
@@ -52,7 +52,8 @@ class Listing < ActiveRecord::Base
 
 	before_save :change_listing_status
 
-	after_create :alert_inviter, :create_default_account
+	after_create :create_default_account
+	# :alert_inviter used to alert supplier inviter before changes
 	
 	private
 
@@ -62,6 +63,7 @@ class Listing < ActiveRecord::Base
 
 	def alert_inviter
 		# Send email to supplier inviter after new listing 
+		# Change this to send email to user customer network
 		@supplier = Supplier.find_by_id(self.supplier_id)
 		@alert = Alert.create!(:user_id => @supplier.invited_by_id, :alert_title => self.title, :supplier_id => self.supplier_id)
 		@user = User.find_by_id(@supplier.invited_by_id)
@@ -74,11 +76,11 @@ class Listing < ActiveRecord::Base
 	end
 	
 	def create_default_account
-		@account = Account.find_by_supplier_id(self.supplier_id)
+		@account = Account.find_by_user_id(self.user_id)
 		if !@account.nil?
 			@account.update_attributes(:listing_limit => @account.listing_limit + 1)
 		else
-			@account = Account.create!(:supplier_id => self.supplier_id, :expires_at => 1.month.from_now, :listing_limit => LIMIT_OFFSET + 1, :account_type => "Basic", :account_price => 8.99)
+			@account = Account.create!(:user_id => self.user_id, :expires_at => 1.month.from_now, :listing_limit => LIMIT_OFFSET + 1, :account_type => "Basic", :account_price => 8.99)
 		end
 	end
 

@@ -1,13 +1,13 @@
 class AccountsController < ApplicationController
-	before_filter :authenticate_supplier, :only => [:edit, :update]
-	before_filter :correct_supplier, :only => [:show, :edit, :update]
+	before_filter :authenticate, :only => [:edit, :update]
+	before_filter :correct_user, :only => [:show, :edit, :update]
 
 	def show
-		@account = current_supplier.account
-		@listings = current_supplier.listings
-		user = User.find_by_id(current_supplier.invited_by_id)
+		@account = current_user.account
+		@listings = current_user.listings
+		user = User.find_by_id(current_user.id)
 		@supplier_user = user if !user.nil?
-		recommended_to_emails = Recommendation.all(:conditions => ["recommended_to_id = ?", current_supplier.id], :select => 'email')
+		recommended_to_emails = Recommendation.all(:conditions => ["recommended_to_id = ?", current_user.id], :select => 'email')
 		@recommended_users = User.where(:email => recommended_to_emails.map(&:email)) if !recommended_to_emails.nil?
 		if @account.account_type == "Pro" && @account.listing_limit <= 30
 			@listing_remain = 30 - @account.listing_limit
@@ -24,19 +24,19 @@ class AccountsController < ApplicationController
 
 	def edit
 		@title = "Update Account"
-		@account = current_supplier.account
+		@account = current_user.account
 	end
 
 	def update
 		if @account.expires_at > Time.now 
 			flash[:notice] = "Your account is still active"
-			redirect_to supplier_path(current_supplier)
+			redirect_to user_path(current_user)
 		else
 			if @account.update_attributes(params[:account])
 				reset_limit
 				update_price
 				flash[:notice] = "Thank you for updating your account"
-				redirect_to supplier_path(current_supplier)
+				redirect_to user_path(current_user)
 			else
 				@title = "Update Account"
 				render edit
@@ -46,14 +46,14 @@ class AccountsController < ApplicationController
 
 	private
 
-	def correct_supplier
-		@account = Account.find_by_supplier_id(current_supplier.id)
+	def correct_user
+		@account = Account.find_by_user_id(current_user.id)
 		if @account.nil?
 			flash[:notice] = "You need to start listing for your account to take effect"
-			redirect_to supplier_path(current_supplier)
+			redirect_to user_path(current_user)
 		else
-			@supplier = Supplier.find_by_id(current_supplier.id)
-			redirect_to(root_path) unless current_supplier?(@supplier)
+			@user = User.find_by_id(current_user.id)
+			redirect_to(root_path) unless current_user?(@user)
 		end
 	end
 

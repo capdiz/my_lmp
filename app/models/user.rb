@@ -48,7 +48,7 @@ class User < ActiveRecord::Base
 
   attr_accessible :first_name, :last_name, :email, :password, :password_confirmation, :remember_me, :confirmation_token, :location, :user_image, :country, :city, :address
 
-  has_many :suppliers
+  has_many :listings
   has_many :invitations, :class_name => 'User', :as => :invited_by 
   has_many :contacts, :dependent => :destroy
   has_many :recommendations, :dependent => :destroy

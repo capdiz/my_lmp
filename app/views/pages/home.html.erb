@@ -11,18 +11,20 @@
 			</table><br/>
 		</div>
 	<% end %>
+	<% unless @user_contacts.empty? %>
+		<div id="alert">
+			<table class="user_contacts" summary="User contacts">
+				<h2><div class="details">User Contacts</div></h2>
+				<%= render @user_contacts %>
+			</table>
+		</div>
+	<% end %>
 	<% unless @recommended_supplier_alerts.empty? %>
 		<div id="alert">
 			<div class="dingbat">Recommended Suppliers</div>
 			<table class="product_alerts" summary="Recommended suppliers">
 				<%= render @recommended_supplier_alerts %>
 			</table><br/>
-			<% unless @user_contacts.empty? %>
-				<table class="user_contacts" summary="User contacts">
-					<h2><div class="details">User Contacts</div></h2>
-					<%= render @user_contacts %>
-				</table>
-			<% end %>
 		</div>
 	<% end %><br/>
 	<div id="content">
@@ -39,7 +41,7 @@
 				</tr>
 				<%= render @user_alerts %>
 			</table><br/>
-		<% end %>
+		<% end %><br/>
 	</div>
 <% else %>
 	<div id="headlines">

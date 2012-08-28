@@ -10,3 +10,13 @@
 	for cats in categories do
 		def_cat = Category.create!(:category_name => cats)
 	end
+
+	admin_user = User.create!(:first_name => "Maurice",
+				  :last_name  => "Kusasirwa",
+				  :email      => "capdiz@yahoo.com",
+				  :password   => "spike256isillmatic",
+				  :password_confirmation => "spike256isillmatic",
+				  :country    => "Uganda",
+				  :city       => "Kampala",
+				  :admin      => true
+				 )

@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(:version => 20120828065818) do
 
   create_table "accounts", :force => true do |t|
-    t.integer  "supplier_id"
+    t.integer  "user_id"
     t.datetime "expires_at"
     t.integer  "listing_limit"
     t.string   "account_type"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(:version => 20120828065818) do
     t.datetime "updated_at"
   end
 
-  add_index "accounts", ["supplier_id"], :name => "index_accounts_on_supplier_id"
+  add_index "accounts", ["user_id"], :name => "index_accounts_on_user_id"
 
   create_table "alerts", :force => true do |t|
     t.integer  "user_id"
@@ -100,7 +100,6 @@ ActiveRecord::Schema.define(:version => 20120828065818) do
     t.string   "profile_image_content_type"
     t.integer  "profile_image_file_size"
     t.datetime "profile_image_updated_at"
-    t.boolean  "profile_image_processing"
   end
 
   add_index "profile_photos", ["supplier_id"], :name => "index_profile_photos_on_supplier_id"

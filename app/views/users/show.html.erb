@@ -107,7 +107,7 @@
 			<% unless @suppliers.empty? %>
 				<%= render 'suppliers/supplier' %>
 			<% else %>
-				<span class="details">You currently have no supplier network. Would you like to <%= link_to 'invite a supplier', new_supplier_invitation_path %> you know now 
+				<span class="details">You currently have no supplier network. 
 					<% if @recommended_suppliers.nil? %>
 						<%= link_to 'or you could request for an invite', "#" %> from other users around you.
 					<% end %>

@@ -4,7 +4,7 @@
 # Table name: user_contacts
 #
 #  id                        :integer         not null, primary key
-#  user_id                   :integer         current user
+#  user_id                   :integer         current user contacting person who posted alert (in this case contact_id)
 #  contact_id                :integer         person who posted alert
 #  contact_alert_id          :integer         user_alert_id
 #  reply_to_id               :string(255)     an email address for current user

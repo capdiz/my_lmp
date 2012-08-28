@@ -8,7 +8,7 @@ class CreateListings < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :listings, :supplier_id
+    add_index :listings, :user_id
   end
 
   def self.down

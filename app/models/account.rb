@@ -14,8 +14,8 @@
 #
 
 class Account < ActiveRecord::Base
-	attr_accessible :supplier_id, :expires_at, :listing_limit, :account_type, :account_price
+	attr_accessible :user_id, :expires_at, :listing_limit, :account_type, :account_price
 
-	belongs_to :supplier
-	validates :supplier_id, :presence => true
+	belongs_to :user
+	validates :user_id, :presence => true
 end
