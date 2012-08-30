@@ -16,9 +16,6 @@ class PagesController < ApplicationController
 			  @recommended_suppliers = Supplier.where(:id => recommended_to_ids.map(&:recommended_to_id)).paginate(:page => params[:page])
 			  @recommended_alerts = Alert.where(:supplier_id => recommended_to_ids.map(&:recommended_to_id))
 		  end
-	  else		  
-		  flash[:notice] = "Please sign in or create an account."
-		  redirect_to(root_path)
 	  end
   end
 
