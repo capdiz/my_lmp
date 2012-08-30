@@ -1,7 +1,7 @@
 class CreateListings < ActiveRecord::Migration
   def self.up
     create_table :listings 	 do |t|
-      t.integer	 :supplier_id
+      t.integer	 :user_id
       t.string	 :title
       t.string 	 :description
       t.float 	 :price
