@@ -32,11 +32,11 @@
 			<h1>Tell people around your location what you need...</h1><br/>
 			<%= render 'layouts/alert' %>
 		</div><br/><br/><br/>
-		<% unless @user_alerts.empty? %><br/>
+		<% unless @user_alerts.empty? %><br/><br/>
 			<div class="alertbar">What users around <%= current_user.city %> are looking for</div>
 			<table class="product_alerts" summary="Product alerts">
 				<%= render @user_alerts %>
-			</table><br/>
+			</table><br/><br/>
 		<% else %>
 			<div class="alertbar">Be the first to post an alert in your location.</div>
 		<% end %><br/>
@@ -49,7 +49,7 @@
 		<div id="newAlert">
 			<h1>Tell people around your location what you need...</h1><br/>
 			<%= render 'layouts/alert' %>
-		</div><br/><br/><br/>
+		</div><br/><br/><br/><br/>
 		<ul>
 			<li><strong>First you sign up on the right hand side of this page. Guess what? It's all free.</strong></li><br/>
 			<li><strong>Then tell other people around your location what you need by posting an alert or even better see if you can provide what other users are looking for by contacting them and listing the item they want or by recommending them to your supplier network.</strong></li><br/>
